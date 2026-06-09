@@ -16,7 +16,7 @@ class AnafApi extends DefaultApi20 {
     }
 
     String getRevokeTokenEndpoint() {
-        return ""
+        return SystemBinding.getPropOrEnv('ANAF_REVOKEURI')
     }
 
     String getAccessTokenEndpoint() {

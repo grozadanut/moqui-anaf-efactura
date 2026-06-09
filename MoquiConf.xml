@@ -3,6 +3,7 @@
 <moqui-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/moqui-conf-3.xsd">
     <default-property name="ANAF_AUTHORIZATIONURI" value="https://logincert.anaf.ro/anaf-oauth2/v1/authorize"/>
     <default-property name="ANAF_TOKENURI" value="https://logincert.anaf.ro/anaf-oauth2/v1/token"/>
+    <default-property name="ANAF_REVOKEURI" value="https://logincert.anaf.ro/anaf-oauth2/v1/revoke"/>
     <default-property name="ANAF_CLIENT_ID" value=""/>
     <default-property name="ANAF_CLIENT_SECRET" value=""/>
 
