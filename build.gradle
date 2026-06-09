@@ -34,7 +34,7 @@ dependencies {
     testImplementation project(':framework').configurations.testImplementation.allDependencies
 
     // Add moqui-anaf-efactura dependencies here
-
+    implementation 'com.github.scribejava:scribejava-core:8.3.3'
 }
 
 // by default the Java plugin runs test on build, change to not do that (only run test if explicit task)

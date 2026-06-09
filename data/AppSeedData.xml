@@ -18,6 +18,8 @@ along with this software (see the LICENSE.md file). If not, see
     <moqui.security.ArtifactGroup artifactGroupId="moqui-anaf-efactura_APP" description="moqui-anaf-efactura App (via root screen)"/>
     <moqui.security.ArtifactGroupMember artifactGroupId="moqui-anaf-efactura_APP" artifactTypeEnumId="AT_XML_SCREEN"
             inheritAuthz="Y" artifactName="component://moqui-anaf-efactura/screen/App.xml"/>
+    <moqui.security.ArtifactGroupMember artifactGroupId="moqui-anaf-efactura_APP" artifactTypeEnumId="AT_XML_SCREEN"
+            inheritAuthz="Y" artifactName="component://moqui-anaf-efactura/screen/anaf.xml"/>
     <!-- Full permissions for the ADMIN user group -->
     <moqui.security.ArtifactAuthz artifactAuthzId="moqui-anaf-efactura_AUTHZ_ALL" userGroupId="ADMIN" artifactGroupId="moqui-anaf-efactura_APP"
             authzTypeEnumId="AUTHZT_ALWAYS" authzActionEnumId="AUTHZA_ALL"/>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://moqui.org/xsd/service-definition-3.xsd">
+
+    <service verb="code" noun="Grant" type="java" location="ro.flexbiz.efactura.AuthenticationFlow" method="codeGrant">
+        <description>
+            Performs a login operation on the IdP server.
+        </description>
+    </service>
+    <service verb="handle" noun="Callback" type="java" location="ro.flexbiz.efactura.AuthenticationFlow" method="handleCallback">
+        <description>
+            Handles the login callback and saves the access and refresh token locally.
+        </description>
+    </service>
+
+</services>

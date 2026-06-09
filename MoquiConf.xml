@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- No copyright or license for configuration file, details here are not considered a creative work. -->
 <moqui-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/moqui-conf-3.xsd">
+    <default-property name="ANAF_AUTHORIZATIONURI" value="https://logincert.anaf.ro/anaf-oauth2/v1/authorize"/>
+    <default-property name="ANAF_TOKENURI" value="https://logincert.anaf.ro/anaf-oauth2/v1/token"/>
+    <default-property name="ANAF_CLIENT_ID" value=""/>
+    <default-property name="ANAF_CLIENT_SECRET" value=""/>
+
     <screen-facade>
         <screen location="component://webroot/screen/webroot/apps.xml">
             <subscreens-item name="moqui_anaf_efactura" menu-title="ANAF eFactura" menu-index="97" location="component://moqui-anaf-efactura/screen/App.xml"/>
+        </screen>
+        <screen location="component://webroot/screen/webroot.xml">
+            <subscreens-item name="anaf" location="component://moqui-anaf-efactura/screen/anaf.xml"/>
         </screen>
     </screen-facade>
 </moqui-conf>
