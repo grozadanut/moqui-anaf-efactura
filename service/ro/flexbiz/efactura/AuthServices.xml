@@ -11,5 +11,18 @@
             Handles the login callback and saves the access and refresh token locally.
         </description>
     </service>
+    <service verb="refresh" noun="AccessToken" type="java" location="ro.flexbiz.efactura.AuthenticationFlow" method="refreshAccessToken">
+        <in-parameters>
+            <parameter name="refreshToken" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="accessToken"/>
+        </out-parameters>
+    </service>
+    <service verb="find" noun="AnafAccessToken" type="java" location="ro.flexbiz.efactura.AuthenticationFlow" method="findAnafAccessToken">
+        <out-parameters>
+            <parameter name="accessToken"/>
+        </out-parameters>
+    </service>
 
 </services>

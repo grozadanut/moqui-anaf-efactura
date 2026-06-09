@@ -1,11 +1,11 @@
 package ro.flexbiz.efactura
 
-import com.github.scribejava.core.builder.ServiceBuilder
 import com.github.scribejava.core.model.OAuth2AccessToken
 import com.github.scribejava.core.oauth.OAuth20Service
 import org.moqui.context.ExecutionContext
 import org.moqui.entity.EntityValue
-import org.moqui.util.SystemBinding
+import org.moqui.service.ServiceException
+import org.moqui.util.CollectionUtilities
 
 import java.sql.Timestamp
 
@@ -63,5 +63,53 @@ class AuthenticationFlow {
         credentialUser.set("fromDate", "2026-06-01T00:00:00Z")
         credentialUser.set("authzActionEnumId", "AUTHZA_ALL")
         credentialUser.store()
+    }
+
+    static Map<String, Object> refreshAccessToken(ExecutionContext ec) {
+        OAuth20Service oauthService = OauthServiceFactory.service(ec)
+        OAuth2AccessToken token = oauthService.refreshAccessToken(ec.context.refreshToken as String)
+        ec.logger.info("refresh ANAF oauth refreshToken: " + token.refreshToken)
+        ec.logger.info("refresh ANAF oauth expiresIn: " + token.expiresIn)
+        ec.logger.info("refresh ANAF oauth tokenType: " + token.tokenType)
+
+        String accessToken = token.getAccessToken()
+        Calendar cal = Calendar.getInstance()
+        cal.setTimeInMillis(ec.user.nowTimestamp.getTime())
+        cal.add(Calendar.SECOND, token.getExpiresIn() ?: 86400) // default to 24 hours
+        Timestamp expiresAt = new Timestamp(cal.getTime().getTime())
+
+        if (accessToken == null || accessToken.isEmpty()) {
+            throw new ServiceException("Tokenul de acces la ANAF nu a putut fi reimprospatat!")
+        }
+
+        EntityValue accessTokenField = ec.entity.makeValue("ro.flexbiz.security.CredentialField")
+        accessTokenField.set("credentialId", "ANAF_EFACTURA_OAUTH_TOKEN")
+        accessTokenField.set("name", "accessToken")
+        accessTokenField.set("fromDate", "2026-06-01T00:00:00Z")
+        accessTokenField.set("thruDate", expiresAt)
+        accessTokenField.set("value", accessToken)
+        accessTokenField.store()
+
+        return [accessToken: token.accessToken]
+    }
+
+    static Map<String, Object> findAnafAccessToken(ExecutionContext ec) {
+        Map<String, Object> anafToken = ec.service.sync().name("CredentialServices.find#Credential")
+                .parameters([credentialId: "ANAF_EFACTURA_OAUTH_TOKEN"])
+                .call()
+
+        String accessToken = CollectionUtilities.findFirstByKeyValue(anafToken.resultList, "name", "accessToken")?.value
+        if (accessToken == null || accessToken.isEmpty()) {
+            String refreshToken = CollectionUtilities.findFirstByKeyValue(anafToken.resultList, "name", "refreshToken")?.value
+
+            if (refreshToken == null || refreshToken.isEmpty())
+                throw new ServiceException("Nu a fost gasit niciun token de acces la ANAF pentru utilizatorul curent!")
+
+            accessToken = ec.service.sync().name("ro.flexbiz.efactura.AuthServices.refresh#AccessToken")
+                    .parameters([refreshToken: refreshToken])
+                    .call().accessToken
+        }
+
+        return [accessToken: accessToken]
     }
 }
