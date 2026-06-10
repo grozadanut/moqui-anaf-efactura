@@ -6,6 +6,7 @@
     <default-property name="ANAF_REVOKEURI" value="https://logincert.anaf.ro/anaf-oauth2/v1/revoke"/>
     <default-property name="ANAF_CLIENT_ID" value=""/>
     <default-property name="ANAF_CLIENT_SECRET" value=""/>
+    <default-property name="anaf.api.base.url" value="https://api.anaf.ro/test/FCTEL"/>
 
     <screen-facade>
         <screen location="component://webroot/screen/webroot/apps.xml">

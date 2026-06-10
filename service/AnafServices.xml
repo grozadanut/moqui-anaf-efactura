@@ -14,13 +14,15 @@ along with this software (see the LICENSE.md file). If not, see
 -->
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
 
-    <service verb="report" noun="Invoice" type="java"
-             location="ro.flexbiz.efactura.service.ReportServices" method="reportInvoice">
+    <service verb="upload" noun="Invoice" type="java"
+             location="ro.flexbiz.efactura.service.AnafServices" method="uploadInvoice">
         <in-parameters>
+            <parameter name="accessToken" required="true"/>
             <parameter name="invoice" type="ro.flexbiz.efactura.pojo.Invoice" required="true"/>
         </in-parameters>
         <out-parameters>
-            <parameter name="reportedInvoice"/>
+            <parameter name="anafUploadResponseHeader" type="ro.flexbiz.efactura.pojo.anaf.AnafUploadResponseHeader"/>
+            <parameter name="statusCode"/>
         </out-parameters>
     </service>
 </services>
