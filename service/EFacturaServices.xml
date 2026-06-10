@@ -23,4 +23,37 @@ along with this software (see the LICENSE.md file). If not, see
             <parameter name="reportedInvoice"/>
         </out-parameters>
     </service>
+    <service verb="find" noun="ById" type="java"
+             location="ro.flexbiz.efactura.service.ReportServices" method="findById">
+        <in-parameters>
+            <parameter name="invoiceId" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="reportedInvoice"/>
+        </out-parameters>
+    </service>
+    <service verb="find" noun="AllById" type="java"
+             location="ro.flexbiz.efactura.service.ReportServices" method="findAllById">
+        <in-parameters>
+            <parameter name="ids" type="List"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="resultList"/>
+        </out-parameters>
+    </service>
+    <service verb="check" noun="ReportedInvoicesState" type="java"
+             location="ro.flexbiz.efactura.service.ReportServices" method="checkReportedInvoicesState">
+        <out-parameters>
+            <parameter name="result"/>
+        </out-parameters>
+    </service>
+    <service verb="download" noun="Response" type="java"
+             location="ro.flexbiz.efactura.service.ReportServices" method="downloadResponse">
+        <in-parameters>
+            <parameter name="downloadId" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="result" type="byte[]"/>
+        </out-parameters>
+    </service>
 </services>

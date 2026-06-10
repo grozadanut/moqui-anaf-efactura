@@ -46,4 +46,27 @@ class AnafServices {
     private static void createAuthHeader(RestClient rest, final String accessToken) {
         rest.addHeader(HttpHeader.AUTHORIZATION, "Bearer " + accessToken)
     }
+
+    static Map<String, Object> checkInvoiceState(ExecutionContext ec) {
+        String accessToken = ec.context.accessToken
+        String uploadIndex = ec.context.uploadIndex
+        RestClient rest = new RestClient()
+        rest.uri(SystemBinding.getPropOrEnv('anaf.api.base.url')+"/rest/stareMesaj?"+
+                RestClient.parametersMapToString([id_incarcare: uploadIndex]))
+
+        createAuthHeader(rest, accessToken)
+        RestClient.RestResponse anafResult = rest.method(RestClient.Method.GET).call()
+        return [anafUploadStateResponseHeader: anafResult.jsonObject(), statusCode: anafResult.statusCode]
+    }
+
+    static Map<String, Object> downloadResponse(ExecutionContext ec) {
+        String accessToken = ec.context.accessToken
+        String downloadId = ec.context.downloadId
+        RestClient rest = new RestClient()
+        rest.uri(SystemBinding.getPropOrEnv('anaf.api.base.url')+"/rest/descarcare?"+
+                RestClient.parametersMapToString([id: downloadId]))
+
+        createAuthHeader(rest, accessToken)
+        return [result: rest.method(RestClient.Method.GET).call().bytes()]
+    }
 }

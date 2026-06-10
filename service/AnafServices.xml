@@ -25,4 +25,25 @@ along with this software (see the LICENSE.md file). If not, see
             <parameter name="statusCode"/>
         </out-parameters>
     </service>
+    <service verb="check" noun="InvoiceState" type="java"
+             location="ro.flexbiz.efactura.service.AnafServices" method="checkInvoiceState">
+        <in-parameters>
+            <parameter name="accessToken" required="true"/>
+            <parameter name="uploadIndex" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="anafUploadStateResponseHeader" type="ro.flexbiz.efactura.pojo.anaf.AnafUploadStateResponseHeader"/>
+            <parameter name="statusCode"/>
+        </out-parameters>
+    </service>
+    <service verb="download" noun="Response" type="java"
+             location="ro.flexbiz.efactura.service.AnafServices" method="downloadResponse">
+        <in-parameters>
+            <parameter name="accessToken" required="true"/>
+            <parameter name="downloadId" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="result" type="byte[]"/>
+        </out-parameters>
+    </service>
 </services>

@@ -20,6 +20,20 @@ along with this software (see the LICENSE.md file). If not, see
 
     <resource name="report">
         <method type="put"><service name="EFacturaServices.report#Invoice"/></method>
+        <resource name="{id}">
+            <method type="get"><service name="EFacturaServices.find#ById"/></method>
+        </resource>
+        <resource name="search">
+            <resource name="findAllById">
+                <method type="get"><service name="EFacturaServices.find#AllById"/></method>
+            </resource>
+        </resource>
+        <resource name="check">
+            <method type="post"><service name="EFacturaServices.check#ReportedInvoicesState"/></method>
+        </resource>
+        <resource name="download">
+            <method type="post"><service name="EFacturaServices.download#Response"/></method>
+        </resource>
     </resource>
 
 </resource>
