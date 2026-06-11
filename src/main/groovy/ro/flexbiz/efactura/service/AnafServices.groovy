@@ -67,6 +67,24 @@ class AnafServices {
                 RestClient.parametersMapToString([id: downloadId]))
 
         createAuthHeader(rest, accessToken)
-        return [result: rest.method(RestClient.Method.GET).call().bytes()]
+        RestClient.RestResponse anafResult = rest.method(RestClient.Method.GET).call()
+        return [statusCode: anafResult.statusCode, result: anafResult.bytes()]
+    }
+
+    static Map<String, Object> receivedMessages(ExecutionContext ec) {
+        String accessToken = ec.context.accessToken
+        String taxId = ec.context.taxId
+        int days = ec.context.days
+
+        if (days < 1 || days > 60)
+            throw new ServiceException("Numarul de zile pentru care se face interogarea trebuie sa fie intre 1 si 60!");
+
+        RestClient rest = new RestClient()
+        rest.uri(SystemBinding.getPropOrEnv('anaf.api.base.url')+"/rest/listaMesajeFactura?"+
+                RestClient.parametersMapToString([zile: days, cif: taxId]))
+
+        createAuthHeader(rest, accessToken)
+        RestClient.RestResponse anafResult = rest.method(RestClient.Method.GET).call()
+        return [anafReceivedMessages: anafResult.jsonObject(), statusCode: anafResult.statusCode]
     }
 }

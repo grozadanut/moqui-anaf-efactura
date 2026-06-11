@@ -99,6 +99,7 @@ class AuthenticationFlow {
                 .call()
 
         String accessToken = CollectionUtilities.findFirstByKeyValue(anafToken.resultList, "name", "accessToken")?.value
+        String taxId = CollectionUtilities.findFirstByKeyValue(anafToken.resultList, "name", "taxId")?.value
         if (accessToken == null || accessToken.isEmpty()) {
             String refreshToken = CollectionUtilities.findFirstByKeyValue(anafToken.resultList, "name", "refreshToken")?.value
 
@@ -110,6 +111,6 @@ class AuthenticationFlow {
                     .call().accessToken
         }
 
-        return [accessToken: accessToken]
+        return [accessToken: accessToken, taxId: taxId]
     }
 }

@@ -44,6 +44,19 @@ along with this software (see the LICENSE.md file). If not, see
         </in-parameters>
         <out-parameters>
             <parameter name="result" type="byte[]"/>
+            <parameter name="statusCode"/>
+        </out-parameters>
+    </service>
+    <service verb="received" noun="Messages" type="java"
+             location="ro.flexbiz.efactura.service.AnafServices" method="receivedMessages">
+        <in-parameters>
+            <parameter name="accessToken" required="true"/>
+            <parameter name="taxId" required="true"/>
+            <parameter name="days" required="true" type="Integer"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="anafReceivedMessages" type="ro.flexbiz.efactura.pojo.anaf.AnafReceivedMessages"/>
+            <parameter name="statusCode"/>
         </out-parameters>
     </service>
 </services>

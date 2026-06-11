@@ -32,4 +32,40 @@ along with this software (see the LICENSE.md file). If not, see
         </seed-data>
     </entity>
 
+    <entity entity-name="ReceivedMessage" package="ro.flexbiz.efactura">
+        <field name="id" type="id" is-pk="true"/>
+        <field name="creationDate" type="date-time"/>
+        <field name="taxId" type="text-medium"/>
+        <field name="uploadIndex" type="text-medium"/>
+        <field name="details" type="text-long"/>
+        <field name="statusId" type="id" enable-audit-log="true"/>
+
+        <relationship type="one" title="ReceivedMessage" related="moqui.basic.StatusItem" short-alias="status"/>
+
+        <seed-data>
+            <moqui.basic.StatusType description="Received Message" statusTypeId="ReceivedMessage"/>
+            <moqui.basic.StatusItem description="Bill Received" sequenceNum="1" statusId="AnafRecMsgBillReceived" statusTypeId="ReceivedMessage"/>
+            <moqui.basic.StatusItem description="Bill Sent" sequenceNum="2" statusId="AnafRecMsgBillSent" statusTypeId="ReceivedMessage"/>
+            <moqui.basic.StatusItem description="Bill Errors" sequenceNum="3" statusId="AnafRecMsgBillErrors" statusTypeId="ReceivedMessage"/>
+            <moqui.basic.StatusItem description="Buyer Message" sequenceNum="4" statusId="AnafRecMsgBuyerMessage" statusTypeId="ReceivedMessage"/>
+        </seed-data>
+    </entity>
+
+    <entity entity-name="ReceivedInvoice" package="ro.flexbiz.efactura">
+        <field name="id" type="id" is-pk="true"/>
+        <field name="uploadIndex" type="text-medium"/>
+        <field name="downloadId" type="text-medium"/>
+        <field name="xmlRaw" type="text-very-long"/>
+        <field name="issueDate" type="date-time"/>
+        <field name="invoiceId" type="id" enable-audit-log="true"/>
+    </entity>
+
+    <entity entity-name="ReceivedCreditNote" package="ro.flexbiz.efactura">
+        <field name="id" type="id" is-pk="true"/>
+        <field name="uploadIndex" type="text-medium"/>
+        <field name="downloadId" type="text-medium"/>
+        <field name="xmlRaw" type="text-very-long"/>
+        <field name="issueDate" type="date-time"/>
+    </entity>
+
 </entities>

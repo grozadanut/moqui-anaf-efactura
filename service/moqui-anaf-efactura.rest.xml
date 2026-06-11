@@ -36,4 +36,37 @@ along with this software (see the LICENSE.md file). If not, see
         </resource>
     </resource>
 
+    <resource name="messages">
+        <resource name="search">
+            <resource name="between">
+                <method type="get"><service name="MessagesServices.received#MessagesBetween"/></method>
+            </resource>
+        </resource>
+        <resource name="check">
+            <method type="post"><service name="MessagesServices.check#ForReceivedMessages"/></method>
+        </resource>
+    </resource>
+
+    <resource name="creditNotes">
+        <resource name="search">
+            <resource name="between">
+                <method type="get"><service name="ReceivedCreditNoteServices.find#AllByIssueDateBetween"/></method>
+            </resource>
+        </resource>
+    </resource>
+
+    <resource name="invoices">
+        <resource name="search">
+            <resource name="between">
+                <method type="get"><service name="ReceivedInvoiceServices.received#InvoicesBetween"/></method>
+            </resource>
+            <resource name="byInvoiceIdIn">
+                <method type="get"><service name="ReceivedInvoiceServices.find#ByInvoiceIdIn"/></method>
+            </resource>
+        </resource>
+        <resource name="{id}">
+            <method type="patch"><service name="ReceivedInvoiceServices.received#InvoicesBetween"/></method>
+        </resource>
+    </resource>
+
 </resource>

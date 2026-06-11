@@ -1,10 +1,10 @@
 package ro.flexbiz.efactura.pojo.anaf;
 
-import java.time.LocalDateTime;
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class AnafReceivedMessage {
 	private String id;

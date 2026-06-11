@@ -22,6 +22,7 @@
     <service verb="find" noun="AnafAccessToken" type="java" location="ro.flexbiz.efactura.AuthenticationFlow" method="findAnafAccessToken">
         <out-parameters>
             <parameter name="accessToken"/>
+            <parameter name="taxId"/>
         </out-parameters>
     </service>
 
