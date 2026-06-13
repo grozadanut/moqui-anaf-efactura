@@ -9,7 +9,9 @@ import org.moqui.entity.EntityCondition
 import org.moqui.entity.EntityValue
 import org.moqui.service.ServiceException
 import org.w3c.dom.Document
+import ro.flexbiz.efactura.entity.ReceivedMessage
 import ro.flexbiz.efactura.mapper.AnafMessageMapper
+import ro.flexbiz.efactura.pojo.anaf.AnafReceivedMessage
 import ro.flexbiz.efactura.pojo.anaf.AnafReceivedMessages
 import ro.flexbiz.efactura.util.StringUtils
 
@@ -77,16 +79,16 @@ class MessagesServices {
 
     static Map<String, Object> billReceived(ExecutionContext ec) {
         final String accessToken = ec.context.accessToken
-        Map<String, Object> message = ec.context.receivedMessage
+        ReceivedMessage message = ec.context.receivedMessage
 
-        if (!message.get("statusId") == "AnafRecMsgBillReceived")
+        if (message.messageType !=  AnafReceivedMessage.AnafReceivedMessageType.BILL_RECEIVED)
             throw new ServiceException("Only AnafRecMsgBillReceived status allowed")
 
         if (ec.entity.fastFindOne("ro.flexbiz.efactura.ReceivedInvoice",
                 false, true, message.getId()) != null)
             return
 
-        final String downloadId = message.get("id")
+        final String downloadId = message.getId()
         Map<String, Object> downloadZipResponse = ec.service.sync()
                 .name("AnafServices.download#Response")
                 .parameters([accessToken: accessToken, downloadId: downloadId])
@@ -111,7 +113,7 @@ class MessagesServices {
                 recInv.set("uploadIndex", message.getUploadIndex())
                 recInv.set("downloadId", downloadId)
                 recInv.set("xmlRaw", rawXml)
-                recInv.set("issueDate", readInvoice.issueDateValue.toEpochSecond(LocalTime.MIN))
+                recInv.set("issueDate", readInvoice.issueDateValue.toEpochSecond(LocalTime.MIN)*1000)
                 recInv.store()
             } else if (StringUtils.equalsIgnoreCase(docType, "CreditNote")) {
                 final CreditNoteType readCreditNote = UBL21Marshaller.creditNote().read(rawXml)
@@ -120,7 +122,7 @@ class MessagesServices {
                 recCreditNote.set("uploadIndex", message.getUploadIndex())
                 recCreditNote.set("downloadId", downloadId)
                 recCreditNote.set("xmlRaw", rawXml)
-                recCreditNote.set("issueDate", readCreditNote.issueDateValue.toEpochSecond(LocalTime.MIN))
+                recCreditNote.set("issueDate", readCreditNote.issueDateValue.toEpochSecond(LocalTime.MIN)*1000)
                 recCreditNote.store()
             } else
                 throw new ServiceException(docType + " document type not supported")
