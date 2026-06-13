@@ -1,5 +1,6 @@
 package ro.flexbiz.efactura.pojo.anaf;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AnafReceivedMessages {
 	public static final String NO_MESSAGES_ERROR = "No messages found";
 	public static final String TOO_MANY_MESSAGES_ERROR = "Too many messages found. Use pagination!";

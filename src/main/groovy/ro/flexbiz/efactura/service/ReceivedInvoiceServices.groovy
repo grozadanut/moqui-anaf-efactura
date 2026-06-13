@@ -1,4 +1,4 @@
-package ro.flexbiz.efactura
+package ro.flexbiz.efactura.service
 
 import org.moqui.context.ExecutionContext
 import org.moqui.entity.EntityCondition

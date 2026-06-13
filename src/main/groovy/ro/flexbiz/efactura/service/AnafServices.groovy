@@ -1,17 +1,23 @@
 package ro.flexbiz.efactura.service
 
+import com.fasterxml.jackson.core.JsonParser
 import com.helger.commons.error.list.IErrorList
 import com.helger.ubl21.UBL21Marshaller
+import jakarta.xml.bind.JAXBContext
+import jakarta.xml.bind.Unmarshaller
 import oasis.names.specification.ubl.schema.xsd.invoice_21.InvoiceType
 import org.eclipse.jetty.http.HttpHeader
 import org.moqui.context.ExecutionContext
+import org.moqui.impl.context.ContextJavaUtil
 import org.moqui.service.ServiceException
 import org.moqui.util.RestClient
 import org.moqui.util.SystemBinding
 import ro.flexbiz.efactura.mapper.InvoiceMapper
 import ro.flexbiz.efactura.pojo.Invoice
 import ro.flexbiz.efactura.pojo.Party
+import ro.flexbiz.efactura.pojo.anaf.AnafReceivedMessages
 import ro.flexbiz.efactura.pojo.anaf.AnafUploadResponseHeader
+import ro.flexbiz.efactura.pojo.anaf.AnafUploadStateResponseHeader
 import ro.flexbiz.efactura.util.StringUtils
 
 class AnafServices {
@@ -40,11 +46,14 @@ class AnafServices {
         ec.logger.info(ublInvoiceXml)
         rest.text(ublInvoiceXml)
         RestClient.RestResponse anafResult = rest.method(RestClient.Method.POST).call()
-        return [anafUploadResponseHeader: anafResult.jsonObject(), statusCode: anafResult.statusCode]
+        JAXBContext jc = JAXBContext.newInstance(AnafUploadResponseHeader.class)
+        Unmarshaller u = jc.createUnmarshaller();
+        return [anafUploadResponseHeader: u.unmarshal(new StringReader(anafResult.text())),
+                statusCode: anafResult.statusCode]
     }
 
     private static void createAuthHeader(RestClient rest, final String accessToken) {
-        rest.addHeader(HttpHeader.AUTHORIZATION, "Bearer " + accessToken)
+        rest.addHeader(HttpHeader.AUTHORIZATION.asString(), "Bearer " + accessToken)
     }
 
     static Map<String, Object> checkInvoiceState(ExecutionContext ec) {
@@ -56,7 +65,10 @@ class AnafServices {
 
         createAuthHeader(rest, accessToken)
         RestClient.RestResponse anafResult = rest.method(RestClient.Method.GET).call()
-        return [anafUploadStateResponseHeader: anafResult.jsonObject(), statusCode: anafResult.statusCode]
+        JAXBContext jc = JAXBContext.newInstance(AnafUploadStateResponseHeader.class)
+        Unmarshaller u = jc.createUnmarshaller()
+        return [anafUploadStateResponseHeader: u.unmarshal(new StringReader(anafResult.text())),
+                statusCode: anafResult.statusCode]
     }
 
     static Map<String, Object> downloadResponse(ExecutionContext ec) {
@@ -77,7 +89,7 @@ class AnafServices {
         int days = ec.context.days
 
         if (days < 1 || days > 60)
-            throw new ServiceException("Numarul de zile pentru care se face interogarea trebuie sa fie intre 1 si 60!");
+            throw new ServiceException("Numarul de zile pentru care se face interogarea trebuie sa fie intre 1 si 60!")
 
         RestClient rest = new RestClient()
         rest.uri(SystemBinding.getPropOrEnv('anaf.api.base.url')+"/rest/listaMesajeFactura?"+
@@ -85,6 +97,8 @@ class AnafServices {
 
         createAuthHeader(rest, accessToken)
         RestClient.RestResponse anafResult = rest.method(RestClient.Method.GET).call()
-        return [anafReceivedMessages: anafResult.jsonObject(), statusCode: anafResult.statusCode]
+        JsonParser jsonParser = ContextJavaUtil.jacksonMapper.createParser(anafResult.bytes())
+        return [anafReceivedMessages: jsonParser.readValueAs(AnafReceivedMessages.class),
+                statusCode: anafResult.statusCode]
     }
 }

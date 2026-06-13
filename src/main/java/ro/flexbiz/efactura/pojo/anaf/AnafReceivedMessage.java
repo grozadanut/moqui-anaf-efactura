@@ -1,11 +1,13 @@
 package ro.flexbiz.efactura.pojo.anaf;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AnafReceivedMessage {
 	private String id;
 	@JsonProperty("data_creare")

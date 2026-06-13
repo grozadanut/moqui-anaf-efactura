@@ -12,7 +12,13 @@
  * <http://creativecommons.org/publicdomain/zero/1.0/>.
  */
 
+apply plugin: 'java'
 apply plugin: 'groovy'
+
+java {
+    sourceCompatibility = 21
+    targetCompatibility = 21
+}
 
 def componentNode = parseComponent(project)
 version = componentNode.'@version'
@@ -37,6 +43,9 @@ dependencies {
     implementation 'com.github.scribejava:scribejava-core:8.3.3'
     implementation 'com.helger.ubl:ph-ubl21:8.0.3'
     implementation 'com.helger.ubl:ph-ubl21-codelists:8.0.3'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.6'
+
+    testImplementation("org.assertj:assertj-core:3.23.1")
 }
 
 // by default the Java plugin runs test on build, change to not do that (only run test if explicit task)

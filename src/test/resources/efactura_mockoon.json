@@ -1,0 +1,738 @@
+{
+  "uuid": "c5dd09a4-e477-46f1-bbca-0a5c05e0a3df",
+  "lastMigration": 33,
+  "name": "Efactura mock",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3002,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "6cd46ca3-192e-4c29-848a-e51453b94e0b",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "prod/FCTEL/rest/upload",
+      "responses": [
+        {
+          "uuid": "e26ae0bf-34ed-4ce3-a29d-ff5620ece369",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:spv:respUploadFisier:v1\" dateResponse=\"202108051140\" ExecutionStatus=\"0\" index_incarcare=\"3828\"/>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Invoice xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cec=\"urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\"><cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.1</cbc:CustomizationID><cbc:ID>LIND100</cbc:ID><cbc:IssueDate>2023-10-20</cbc:IssueDate><cbc:DueDate>2023-11-19</cbc:DueDate><cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode><cbc:Note>Textual note</cbc:Note><cbc:DocumentCurrencyCode>RON</cbc:DocumentCurrencyCode><cbc:TaxCurrencyCode>RON</cbc:TaxCurrencyCode><cac:AccountingSupplierParty><cac:Party><cac:PartyName><cbc:Name>Colibri - Linic</cbc:Name></cac:PartyName><cac:PostalAddress><cbc:StreetName>Balcescu 51</cbc:StreetName><cbc:AdditionalStreetName>Vladimirescu 59</cbc:AdditionalStreetName><cbc:CityName>MARGHITA</cbc:CityName><cbc:PostalZone>415300</cbc:PostalZone><cbc:CountrySubentity>RO-BH</cbc:CountrySubentity><cac:Country><cbc:IdentificationCode>RO</cbc:IdentificationCode></cac:Country></cac:PostalAddress><cac:PartyTaxScheme><cbc:CompanyID>RO1485236</cbc:CompanyID><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:PartyTaxScheme><cac:PartyLegalEntity><cbc:RegistrationName>LINIC SRL</cbc:RegistrationName><cbc:CompanyID>J05/1001/2002</cbc:CompanyID><cbc:CompanyLegalForm>Capital social 200 RON</cbc:CompanyLegalForm></cac:PartyLegalEntity><cac:Contact><cbc:Name>Groza Danut</cbc:Name><cbc:Telephone>0259xxx</cbc:Telephone><cbc:ElectronicMail>linic@gmail.com</cbc:ElectronicMail></cac:Contact></cac:Party></cac:AccountingSupplierParty><cac:AccountingCustomerParty><cac:Party><cac:PostalAddress><cbc:StreetName>Revolutiei</cbc:StreetName><cbc:CityName>MARGHITA</cbc:CityName><cbc:PostalZone>415300</cbc:PostalZone><cbc:CountrySubentity>RO-BH</cbc:CountrySubentity><cac:Country><cbc:IdentificationCode>RO</cbc:IdentificationCode></cac:Country></cac:PostalAddress><cac:PartyTaxScheme><cbc:CompanyID>RO148</cbc:CompanyID><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:PartyTaxScheme><cac:PartyLegalEntity><cbc:RegistrationName>CLIENT SRL</cbc:RegistrationName><cbc:CompanyID>J05/10/2023</cbc:CompanyID></cac:PartyLegalEntity><cac:Contact><cbc:Name>Delegat</cbc:Name><cbc:Telephone>0745154xxx</cbc:Telephone></cac:Contact></cac:Party></cac:AccountingCustomerParty><cac:PayeeParty><cac:PartyName><cbc:Name>Colibri - Linic</cbc:Name></cac:PartyName><cac:PostalAddress><cbc:StreetName>Balcescu 51</cbc:StreetName><cbc:AdditionalStreetName>Vladimirescu 59</cbc:AdditionalStreetName><cbc:CityName>MARGHITA</cbc:CityName><cbc:PostalZone>415300</cbc:PostalZone><cbc:CountrySubentity>RO-BH</cbc:CountrySubentity><cac:Country><cbc:IdentificationCode>RO</cbc:IdentificationCode></cac:Country></cac:PostalAddress><cac:PartyTaxScheme><cbc:CompanyID>RO1485236</cbc:CompanyID><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:PartyTaxScheme><cac:PartyLegalEntity><cbc:RegistrationName>LINIC SRL</cbc:RegistrationName><cbc:CompanyID>J05/1001/2002</cbc:CompanyID><cbc:CompanyLegalForm>Capital social 200 RON</cbc:CompanyLegalForm></cac:PartyLegalEntity><cac:Contact><cbc:Name>Groza Danut</cbc:Name><cbc:Telephone>0259xxx</cbc:Telephone><cbc:ElectronicMail>linic@gmail.com</cbc:ElectronicMail></cac:Contact></cac:PayeeParty><cac:PaymentMeans><cbc:PaymentMeansCode>30</cbc:PaymentMeansCode><cbc:PaymentID>FF_LIND100/2023-10-20</cbc:PaymentID><cac:PayeeFinancialAccount><cbc:ID>RO0123456xxx</cbc:ID><cbc:Name>LINIC SRL</cbc:Name><cbc:CurrencyCode>RON</cbc:CurrencyCode><cac:FinancialInstitutionBranch><cbc:ID>BT</cbc:ID></cac:FinancialInstitutionBranch></cac:PayeeFinancialAccount></cac:PaymentMeans><cac:AllowanceCharge><cbc:ChargeIndicator>true</cbc:ChargeIndicator><cbc:AllowanceChargeReasonCode>ZZZ</cbc:AllowanceChargeReasonCode><cbc:AllowanceChargeReason>Mutually defined</cbc:AllowanceChargeReason><cbc:MultiplierFactorNumeric>0.1</cbc:MultiplierFactorNumeric><cbc:Amount currencyID=\"RON\">10</cbc:Amount><cbc:BaseAmount currencyID=\"RON\">100</cbc:BaseAmount></cac:AllowanceCharge><cac:AllowanceCharge><cbc:ChargeIndicator>false</cbc:ChargeIndicator><cbc:AllowanceChargeReasonCode>19</cbc:AllowanceChargeReasonCode><cbc:AllowanceChargeReason>Trade discount</cbc:AllowanceChargeReason><cbc:MultiplierFactorNumeric>0.1</cbc:MultiplierFactorNumeric><cbc:Amount currencyID=\"RON\">10</cbc:Amount><cbc:BaseAmount currencyID=\"RON\">100</cbc:BaseAmount></cac:AllowanceCharge><cac:TaxTotal><cbc:TaxAmount currencyID=\"RON\">19</cbc:TaxAmount><cac:TaxSubtotal><cbc:TaxableAmount currencyID=\"RON\">100</cbc:TaxableAmount><cbc:TaxAmount currencyID=\"RON\">19</cbc:TaxAmount><cac:TaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>19.00</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:TaxCategory></cac:TaxSubtotal></cac:TaxTotal><cac:LegalMonetaryTotal><cbc:LineExtensionAmount currencyID=\"RON\">100</cbc:LineExtensionAmount><cbc:TaxExclusiveAmount currencyID=\"RON\">100</cbc:TaxExclusiveAmount><cbc:TaxInclusiveAmount currencyID=\"RON\">119</cbc:TaxInclusiveAmount><cbc:AllowanceTotalAmount currencyID=\"RON\">10</cbc:AllowanceTotalAmount><cbc:ChargeTotalAmount currencyID=\"RON\">10</cbc:ChargeTotalAmount><cbc:PrepaidAmount currencyID=\"RON\">50</cbc:PrepaidAmount><cbc:PayableAmount currencyID=\"RON\">79</cbc:PayableAmount></cac:LegalMonetaryTotal><cac:InvoiceLine><cbc:ID>1</cbc:ID><cbc:Note>Test note</cbc:Note><cbc:InvoicedQuantity unitCode=\"C62\">11</cbc:InvoicedQuantity><cbc:LineExtensionAmount currencyID=\"RON\">100</cbc:LineExtensionAmount><cac:AllowanceCharge><cbc:ChargeIndicator>false</cbc:ChargeIndicator><cbc:AllowanceChargeReasonCode>19</cbc:AllowanceChargeReasonCode><cbc:AllowanceChargeReason>Trade discount</cbc:AllowanceChargeReason><cbc:MultiplierFactorNumeric>0.1</cbc:MultiplierFactorNumeric><cbc:Amount currencyID=\"RON\">10</cbc:Amount><cbc:BaseAmount currencyID=\"RON\">100</cbc:BaseAmount></cac:AllowanceCharge><cac:Item><cbc:Description>Super fluffly paper</cbc:Description><cbc:Name>Toilet paper 3ply</cbc:Name><cac:BuyersItemIdentification><cbc:ID>598751225812</cbc:ID></cac:BuyersItemIdentification><cac:SellersItemIdentification><cbc:ID>399</cbc:ID></cac:SellersItemIdentification><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>19.00</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item><cac:Price><cbc:PriceAmount currencyID=\"RON\">10</cbc:PriceAmount><cbc:BaseQuantity unitCode=\"C62\">1</cbc:BaseQuantity></cac:Price></cac:InvoiceLine></Invoice>",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "standard",
+              "value": "UBL",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "cif",
+              "value": "1485236",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "d90dc8e7-09ac-4b13-b54e-77f2d150d75a",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:spv:respUploadFisier:v1\" dateResponse=\"202210121036\" ExecutionStatus=\"1\">\r\n    <Errors errorMessage=\"Nu exista niciun CIF petru care sa aveti drept in SPV\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": "SEQUENTIAL",
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "cce29245-6654-4745-9c43-cfb20fb9ca33",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "prod/FCTEL/rest/stareMesaj",
+      "responses": [
+        {
+          "uuid": "12baa8e4-fce1-4173-9cd4-540ccbb53252",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\" stare=\"ok\" id_descarcare=\"1234\"/>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "3828",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "ea1e9bde-f2eb-405e-b28f-f30f03d11ec1",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\" stare=\"nok\" id_descarcare=\"123\"/>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "3829",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "48d31e70-49ec-44a4-b3c9-fffa59b51147",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\" stare=\"in prelucrare\"/>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "3830",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "a1ff32bc-4ff4-4647-adce-2c4c3cbd90fb",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\" stare=\"XML cu erori nepreluat de sistem\"/>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "3831",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "23efb236-2c0b-4f23-9f2c-01ca6e03f3d7",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\">\r\n    <Errors errorMessage=\"Nu aveti dreptul de inteorgare pentru id_incarcare=3828\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "3832",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "778cae28-4e72-4533-aa3b-afda7702da77",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\">\r\n    <Errors errorMessage=\"Nu exista niciun CIF petru care sa aveti drept\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "3833",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "fee03369-bd38-4ca4-8a79-0d7e5962b212",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\">\r\n    <Errors errorMessage=\"Id_incarcare introdus= aaa nu este un numar intreg\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "aaa",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "44393fcf-9426-47ef-a8a0-1ea865354242",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\">\r\n    <Errors errorMessage=\"Nu exista factura cu id_incarcare= 15000\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "15000",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "3c0ad27d-ded7-4bb5-91f9-2dae33388377",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\">\r\n    <Errors errorMessage=\"S-au facut deja 20 descarcari de mesaj in cursul zilei\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "3838",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "ddb53e24-3352-442f-83dc-f02fb4d7ee7e",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "prod/FCTEL/rest/listaMesajeFactura",
+      "responses": [
+        {
+          "uuid": "7d6ced09-5be0-466d-a9a6-63dcd0f1d3c3",
+          "body": "{\n  \"mesaje\": [\n    {\n      \"data_creare\": \"202211011415\",\n      \"cif\": \"1485236\",\n      \"id_solicitare\": \"5001130147\",\n      \"detalii\": \"Erori de validare identificate la factura primita cu id_incarcare=5001130147\",\n      \"tip\": \"ERORI FACTURA\",\n      \"id\": \"3001293434\"\n    },\n    {\n      \"data_creare\": \"202211011336\",\n      \"cif\": \"1485236\",\n      \"id_solicitare\": \"5001131297\",\n      \"detalii\": \"Factura cu id_incarcare=5001131297 emisa de cif_emitent=1485236 pentru cif_beneficiar=3\",\n      \"tip\": \"FACTURA TRIMISA\",\n      \"id\": \"3001503294\"\n    },\n    {\n      \"data_creare\": \"202401251436\",\n      \"cif\": \"1485236\",\n      \"id_solicitare\": \"5006514680\",\n      \"detalii\": \"Factura cu id_incarcare=5006514680 emisa de cif_emitent=1485236 pentru cif_beneficiar=1485236\",\n      \"tip\": \"FACTURA PRIMITA\",\n      \"id\": \"3009239535\"\n    }\n  ],\n  \"serial\": \"1234AA456\",\n  \"cui\": \"1485236\",\n  \"titlu\": \"Lista Mesaje disponibile din ultimele 60 zile\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "60",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "cif",
+              "value": "1485236",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "842fe127-bee3-463e-bcf9-f1fc404a8fe3",
+          "body": "{\n  \"eroare\": \"CIF introdus= aaa nu este un numar\",\n  \"titlu\": \"Lista Mesaje\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "60",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "cif",
+              "value": "aaa",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "35a8fd5d-0ecd-4ae3-b7fe-134328c8da5a",
+          "body": "{\n  \"eroare\": \"Nu aveti drept in SPV pentru CIF=8000000000\",\n  \"titlu\": \"Lista Mesaje\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "60",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "cif",
+              "value": "8000000000",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "aee57e3a-b75a-49d1-b749-a470420223e4",
+          "body": "{\n  \"eroare\": \"Nu exista niciun CIF petru care sa aveti drept in SPV\",\n  \"titlu\": \"Lista Mesaje\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "60",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "cif",
+              "value": "1485237",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "21ebb4b5-3c1b-442e-82ee-b71ec6769431",
+          "body": "{\n  \"eroare\": \"Nu exista mesaje in ultimele 60 zile\",\n  \"titlu\": \"Lista Mesaje\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "60",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "cif",
+              "value": "1485238",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "33d2d298-43a3-4739-9af1-8eaf8911a4e9",
+          "body": "{\n  \"eroare\": \"Lista de mesaje este mai mare decat numarul de 500 elemente permise in pagina. Folositi endpoint-ul cu paginatie.\",\n  \"titlu\": \"Lista Mesaje\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "60",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "cif",
+              "value": "1485239",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "efb98a99-7ed8-403a-b7ec-2e4720100c55",
+          "body": "{\n  \"eroare\": \"S-au facut deja 1000 interogari de lista mesaje de catre utilizator in cursul zilei\",\n  \"titlu\": \"Lista Mesaje\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "60",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "cif",
+              "value": "1485240",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "6cd46ca3-192e-4c29-848a-e51453b94e0b"
+    },
+    {
+      "type": "route",
+      "uuid": "cce29245-6654-4745-9c43-cfb20fb9ca33"
+    },
+    {
+      "type": "route",
+      "uuid": "ddb53e24-3352-442f-83dc-f02fb4d7ee7e"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}
