@@ -4,6 +4,7 @@ import org.moqui.context.ExecutionContext;
 import org.moqui.entity.EntityValue;
 import ro.flexbiz.efactura.pojo.anaf.AnafReceivedMessage;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -24,12 +25,13 @@ public class ReceivedMessage {
 		this.messageType = messageType;
 	}
 
-	public EntityValue save(ExecutionContext ec) {
+	public EntityValue convert(ExecutionContext ec) {
 		EntityValue entity = ec.getEntity().makeValue("ro.flexbiz.efactura.ReceivedMessage");
-		entity.set("id", id);
-		entity.set("creationDate", creationDate);
+		entity.set("id", id+"");
+		entity.set("creationDate", Timestamp.valueOf(creationDate));
 		entity.set("taxId", taxId);
 		entity.set("uploadIndex", uploadIndex);
+		entity.set("details", details);
 		entity.set("statusId", switch (messageType) {
 			case BILL_RECEIVED -> "AnafRecMsgBillReceived";
 			case BILL_SENT -> "AnafRecMsgBillSent";
@@ -37,7 +39,11 @@ public class ReceivedMessage {
 			case BUYER_MESSAGE -> "AnafRecMsgBuyerMessage";
 			default -> null;
 		});
-		return entity.store();
+		return entity;
+	}
+
+	public EntityValue save(ExecutionContext ec) {
+		return convert(ec).store();
 	}
 
 	public ReceivedMessage() {

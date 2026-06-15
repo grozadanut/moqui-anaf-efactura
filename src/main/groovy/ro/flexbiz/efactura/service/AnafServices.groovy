@@ -47,8 +47,10 @@ class AnafServices {
         rest.text(ublInvoiceXml)
         RestClient.RestResponse anafResult = rest.method(RestClient.Method.POST).call()
         JAXBContext jc = JAXBContext.newInstance(AnafUploadResponseHeader.class)
-        Unmarshaller u = jc.createUnmarshaller();
-        return [anafUploadResponseHeader: u.unmarshal(new StringReader(anafResult.text())),
+        Unmarshaller u = jc.createUnmarshaller()
+        AnafUploadResponseHeader response = StringUtils.isBlank(anafResult.text()) ? null :
+                u.unmarshal(new StringReader(anafResult.text()))
+        return [anafUploadResponseHeader: response,
                 statusCode: anafResult.statusCode]
     }
 
@@ -67,7 +69,9 @@ class AnafServices {
         RestClient.RestResponse anafResult = rest.method(RestClient.Method.GET).call()
         JAXBContext jc = JAXBContext.newInstance(AnafUploadStateResponseHeader.class)
         Unmarshaller u = jc.createUnmarshaller()
-        return [anafUploadStateResponseHeader: u.unmarshal(new StringReader(anafResult.text())),
+        AnafUploadStateResponseHeader response = StringUtils.isBlank(anafResult.text()) ? null :
+                u.unmarshal(new StringReader(anafResult.text()))
+        return [anafUploadStateResponseHeader: response,
                 statusCode: anafResult.statusCode]
     }
 
@@ -98,7 +102,8 @@ class AnafServices {
         createAuthHeader(rest, accessToken)
         RestClient.RestResponse anafResult = rest.method(RestClient.Method.GET).call()
         JsonParser jsonParser = ContextJavaUtil.jacksonMapper.createParser(anafResult.bytes())
-        return [anafReceivedMessages: jsonParser.readValueAs(AnafReceivedMessages.class),
-                statusCode: anafResult.statusCode]
+        AnafReceivedMessages response = StringUtils.isBlank(anafResult.text()) ? null :
+                jsonParser.readValueAs(AnafReceivedMessages.class)
+        return [anafReceivedMessages: response, statusCode: anafResult.statusCode]
     }
 }

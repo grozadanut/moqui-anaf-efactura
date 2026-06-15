@@ -41,7 +41,7 @@ class ReceivedInvoiceServiceTests extends Specification {
                 AnafReceivedMessage.AnafReceivedMessageType.BILL_SENT)
         when:
         ec.service.sync().name("MessagesServices.bill#Received")
-                .parameters([accessToken: TestData.accessToken, receivedMessage: billSent])
+                .parameters([accessToken: TestData.accessToken, receivedMessage: billSent.convert(ec)])
                 .call()
         then:
         ec.message.errorsString.contains("Only AnafRecMsgBillReceived status allowed")
@@ -59,7 +59,7 @@ class ReceivedInvoiceServiceTests extends Specification {
 
         when:
         ec.service.sync().name("MessagesServices.bill#Received")
-                .parameters([accessToken: TestData.accessToken, receivedMessage: billReceived])
+                .parameters([accessToken: TestData.accessToken, receivedMessage: billReceived.convert(ec)])
                 .call()
 
         then:
@@ -81,7 +81,7 @@ class ReceivedInvoiceServiceTests extends Specification {
 
         when:
         ec.service.sync().name("MessagesServices.bill#Received")
-                .parameters([accessToken: TestData.accessToken, receivedMessage: billReceived])
+                .parameters([accessToken: TestData.accessToken, receivedMessage: billReceived.convert(ec)])
                 .call()
 
         then:
@@ -109,7 +109,7 @@ class ReceivedInvoiceServiceTests extends Specification {
 
         when:
         ec.service.sync().name("MessagesServices.bill#Received")
-                .parameters([accessToken: TestData.accessToken, receivedMessage: billReceived])
+                .parameters([accessToken: TestData.accessToken, receivedMessage: billReceived.convert(ec)])
                 .call()
 
         then:
@@ -127,7 +127,7 @@ class ReceivedInvoiceServiceTests extends Specification {
 
         when:
         ec.service.sync().name("MessagesServices.bill#Received")
-                .parameters([accessToken: TestData.accessToken, receivedMessage: billReceived])
+                .parameters([accessToken: TestData.accessToken, receivedMessage: billReceived.convert(ec)])
                 .call()
 
         then:

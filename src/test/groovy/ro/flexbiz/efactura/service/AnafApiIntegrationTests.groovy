@@ -18,7 +18,7 @@ class AnafApiIntegrationTests extends Specification {
     @Shared
     ExecutionContext ec
 
-    private Invoice invoice 
+    private Invoice invoice
     private String token 
 
     def setupSpec() {
@@ -177,7 +177,7 @@ class AnafApiIntegrationTests extends Specification {
     def "givenInvalidAccessPermission_whenUpload_thenReturnError"() {
         when:
         final AnafUploadResponseHeader response = ec.service.sync().name("AnafServices.upload#Invoice")
-                .parameters([accessToken: token, invoice: invoice])
+                .parameters([accessToken: token+"2", invoice: invoice])
                 .call().anafUploadResponseHeader as AnafUploadResponseHeader
 
         then:

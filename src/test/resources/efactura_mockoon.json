@@ -20,7 +20,7 @@
           "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:spv:respUploadFisier:v1\" dateResponse=\"202108051140\" ExecutionStatus=\"0\" index_incarcare=\"3828\"/>",
           "latency": 0,
           "statusCode": 200,
-          "label": "",
+          "label": "AnafApiIntegrationTests",
           "headers": [
             {
               "key": "Content-Type",
@@ -33,23 +33,16 @@
           "sendFileAsBody": false,
           "rules": [
             {
-              "target": "body",
-              "modifier": "",
-              "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Invoice xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cec=\"urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\"><cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.1</cbc:CustomizationID><cbc:ID>LIND100</cbc:ID><cbc:IssueDate>2023-10-20</cbc:IssueDate><cbc:DueDate>2023-11-19</cbc:DueDate><cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode><cbc:Note>Textual note</cbc:Note><cbc:DocumentCurrencyCode>RON</cbc:DocumentCurrencyCode><cbc:TaxCurrencyCode>RON</cbc:TaxCurrencyCode><cac:AccountingSupplierParty><cac:Party><cac:PartyName><cbc:Name>Colibri - Linic</cbc:Name></cac:PartyName><cac:PostalAddress><cbc:StreetName>Balcescu 51</cbc:StreetName><cbc:AdditionalStreetName>Vladimirescu 59</cbc:AdditionalStreetName><cbc:CityName>MARGHITA</cbc:CityName><cbc:PostalZone>415300</cbc:PostalZone><cbc:CountrySubentity>RO-BH</cbc:CountrySubentity><cac:Country><cbc:IdentificationCode>RO</cbc:IdentificationCode></cac:Country></cac:PostalAddress><cac:PartyTaxScheme><cbc:CompanyID>RO1485236</cbc:CompanyID><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:PartyTaxScheme><cac:PartyLegalEntity><cbc:RegistrationName>LINIC SRL</cbc:RegistrationName><cbc:CompanyID>J05/1001/2002</cbc:CompanyID><cbc:CompanyLegalForm>Capital social 200 RON</cbc:CompanyLegalForm></cac:PartyLegalEntity><cac:Contact><cbc:Name>Groza Danut</cbc:Name><cbc:Telephone>0259xxx</cbc:Telephone><cbc:ElectronicMail>linic@gmail.com</cbc:ElectronicMail></cac:Contact></cac:Party></cac:AccountingSupplierParty><cac:AccountingCustomerParty><cac:Party><cac:PostalAddress><cbc:StreetName>Revolutiei</cbc:StreetName><cbc:CityName>MARGHITA</cbc:CityName><cbc:PostalZone>415300</cbc:PostalZone><cbc:CountrySubentity>RO-BH</cbc:CountrySubentity><cac:Country><cbc:IdentificationCode>RO</cbc:IdentificationCode></cac:Country></cac:PostalAddress><cac:PartyTaxScheme><cbc:CompanyID>RO148</cbc:CompanyID><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:PartyTaxScheme><cac:PartyLegalEntity><cbc:RegistrationName>CLIENT SRL</cbc:RegistrationName><cbc:CompanyID>J05/10/2023</cbc:CompanyID></cac:PartyLegalEntity><cac:Contact><cbc:Name>Delegat</cbc:Name><cbc:Telephone>0745154xxx</cbc:Telephone></cac:Contact></cac:Party></cac:AccountingCustomerParty><cac:PayeeParty><cac:PartyName><cbc:Name>Colibri - Linic</cbc:Name></cac:PartyName><cac:PostalAddress><cbc:StreetName>Balcescu 51</cbc:StreetName><cbc:AdditionalStreetName>Vladimirescu 59</cbc:AdditionalStreetName><cbc:CityName>MARGHITA</cbc:CityName><cbc:PostalZone>415300</cbc:PostalZone><cbc:CountrySubentity>RO-BH</cbc:CountrySubentity><cac:Country><cbc:IdentificationCode>RO</cbc:IdentificationCode></cac:Country></cac:PostalAddress><cac:PartyTaxScheme><cbc:CompanyID>RO1485236</cbc:CompanyID><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:PartyTaxScheme><cac:PartyLegalEntity><cbc:RegistrationName>LINIC SRL</cbc:RegistrationName><cbc:CompanyID>J05/1001/2002</cbc:CompanyID><cbc:CompanyLegalForm>Capital social 200 RON</cbc:CompanyLegalForm></cac:PartyLegalEntity><cac:Contact><cbc:Name>Groza Danut</cbc:Name><cbc:Telephone>0259xxx</cbc:Telephone><cbc:ElectronicMail>linic@gmail.com</cbc:ElectronicMail></cac:Contact></cac:PayeeParty><cac:PaymentMeans><cbc:PaymentMeansCode>30</cbc:PaymentMeansCode><cbc:PaymentID>FF_LIND100/2023-10-20</cbc:PaymentID><cac:PayeeFinancialAccount><cbc:ID>RO0123456xxx</cbc:ID><cbc:Name>LINIC SRL</cbc:Name><cbc:CurrencyCode>RON</cbc:CurrencyCode><cac:FinancialInstitutionBranch><cbc:ID>BT</cbc:ID></cac:FinancialInstitutionBranch></cac:PayeeFinancialAccount></cac:PaymentMeans><cac:AllowanceCharge><cbc:ChargeIndicator>true</cbc:ChargeIndicator><cbc:AllowanceChargeReasonCode>ZZZ</cbc:AllowanceChargeReasonCode><cbc:AllowanceChargeReason>Mutually defined</cbc:AllowanceChargeReason><cbc:MultiplierFactorNumeric>0.1</cbc:MultiplierFactorNumeric><cbc:Amount currencyID=\"RON\">10</cbc:Amount><cbc:BaseAmount currencyID=\"RON\">100</cbc:BaseAmount></cac:AllowanceCharge><cac:AllowanceCharge><cbc:ChargeIndicator>false</cbc:ChargeIndicator><cbc:AllowanceChargeReasonCode>19</cbc:AllowanceChargeReasonCode><cbc:AllowanceChargeReason>Trade discount</cbc:AllowanceChargeReason><cbc:MultiplierFactorNumeric>0.1</cbc:MultiplierFactorNumeric><cbc:Amount currencyID=\"RON\">10</cbc:Amount><cbc:BaseAmount currencyID=\"RON\">100</cbc:BaseAmount></cac:AllowanceCharge><cac:TaxTotal><cbc:TaxAmount currencyID=\"RON\">19</cbc:TaxAmount><cac:TaxSubtotal><cbc:TaxableAmount currencyID=\"RON\">100</cbc:TaxableAmount><cbc:TaxAmount currencyID=\"RON\">19</cbc:TaxAmount><cac:TaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>19.00</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:TaxCategory></cac:TaxSubtotal></cac:TaxTotal><cac:LegalMonetaryTotal><cbc:LineExtensionAmount currencyID=\"RON\">100</cbc:LineExtensionAmount><cbc:TaxExclusiveAmount currencyID=\"RON\">100</cbc:TaxExclusiveAmount><cbc:TaxInclusiveAmount currencyID=\"RON\">119</cbc:TaxInclusiveAmount><cbc:AllowanceTotalAmount currencyID=\"RON\">10</cbc:AllowanceTotalAmount><cbc:ChargeTotalAmount currencyID=\"RON\">10</cbc:ChargeTotalAmount><cbc:PrepaidAmount currencyID=\"RON\">50</cbc:PrepaidAmount><cbc:PayableAmount currencyID=\"RON\">79</cbc:PayableAmount></cac:LegalMonetaryTotal><cac:InvoiceLine><cbc:ID>1</cbc:ID><cbc:Note>Test note</cbc:Note><cbc:InvoicedQuantity unitCode=\"C62\">11</cbc:InvoicedQuantity><cbc:LineExtensionAmount currencyID=\"RON\">100</cbc:LineExtensionAmount><cac:AllowanceCharge><cbc:ChargeIndicator>false</cbc:ChargeIndicator><cbc:AllowanceChargeReasonCode>19</cbc:AllowanceChargeReasonCode><cbc:AllowanceChargeReason>Trade discount</cbc:AllowanceChargeReason><cbc:MultiplierFactorNumeric>0.1</cbc:MultiplierFactorNumeric><cbc:Amount currencyID=\"RON\">10</cbc:Amount><cbc:BaseAmount currencyID=\"RON\">100</cbc:BaseAmount></cac:AllowanceCharge><cac:Item><cbc:Description>Super fluffly paper</cbc:Description><cbc:Name>Toilet paper 3ply</cbc:Name><cac:BuyersItemIdentification><cbc:ID>598751225812</cbc:ID></cac:BuyersItemIdentification><cac:SellersItemIdentification><cbc:ID>399</cbc:ID></cac:SellersItemIdentification><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>19.00</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item><cac:Price><cbc:PriceAmount currencyID=\"RON\">10</cbc:PriceAmount><cbc:BaseQuantity unitCode=\"C62\">1</cbc:BaseQuantity></cac:Price></cac:InvoiceLine></Invoice>",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "query",
-              "modifier": "standard",
-              "value": "UBL",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
               "target": "query",
               "modifier": "cif",
               "value": "1485236",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer tokenValue",
               "invert": false,
               "operator": "equals"
             }
@@ -66,7 +59,7 @@
           "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:spv:respUploadFisier:v1\" dateResponse=\"202210121036\" ExecutionStatus=\"1\">\r\n    <Errors errorMessage=\"Nu exista niciun CIF petru care sa aveti drept in SPV\"/>\r\n</header>",
           "latency": 0,
           "statusCode": 200,
-          "label": "",
+          "label": "AnafApiIntegrationTests",
           "headers": [
             {
               "key": "Content-Type",
@@ -77,8 +70,107 @@
           "filePath": "",
           "databucketID": "",
           "sendFileAsBody": false,
-          "rules": [],
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer tokenValue2",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
           "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "27364a41-69e3-4d9f-8dd1-1a7de7238067",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:spv:respUploadFisier:v1\" dateResponse=\"202108051140\" ExecutionStatus=\"0\" index_incarcare=\"1234\"/>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ReportServiceTests",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer ReportServiceTests",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "1b5fda19-8393-4cbd-997c-7a6b0a1e3d37",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "ReportServiceTests",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer returnError",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "5c3c1c71-a660-429f-9cb0-65df0085ccb9",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:spv:respUploadFisier:v1\" dateResponse=\"202210121036\" ExecutionStatus=\"1\">\r\n    <Errors errorMessage=\"Not permitted\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ReportServiceTests",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer notPerm",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": false,
@@ -86,7 +178,7 @@
           "callbacks": []
         }
       ],
-      "responseMode": "SEQUENTIAL",
+      "responseMode": null,
       "streamingMode": null,
       "streamingInterval": 0
     },
@@ -384,6 +476,326 @@
           "default": false,
           "crudKey": "id",
           "callbacks": []
+        },
+        {
+          "uuid": "02d54be4-8f33-4e18-a202-c7446cfd98a8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "ReportServiceTests",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "5000",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "29baeb43-2d9c-4794-8ea1-5fd1112dce98",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\" stare=\"ok\" id_descarcare=\"1234\"/>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ReportServiceTests.givenValidInvoice_whenCheckRepInvState_thenSaveDownloadIdAndState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "5001",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "ce8f7ea1-5864-4a6c-bf7f-95f8493929d7",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\" stare=\"nok\" id_descarcare=\"4321\">\r\n  <Errors errorMessage=\"Validarea facturii a esuat. Descarcati fisierul de erori cu id-ul 4321\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ReportServiceTests.givenInvalidInvoice_whenCheckRepInvState_thenSaveDownloadIdAndState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "5002",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "0da66c16-6bd3-4036-9042-2cd8ac504032",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\" stare=\"in prelucrare\"/>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ReportServiceTests.givenValidationIsPending_whenCheckRepInvState_thenSkipCheck",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "5003",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "be9b2cd8-6893-42ea-8f47-597fc5f2d914",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\" stare=\"XML cu erori nepreluat de sistem\"/>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ReportServiceTests.givenXmlInvalid_whenCheckRepInvState_thenSaveErrorState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "5004",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "1de67c5b-871d-4227-bcaf-87d63b5432db",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\">\r\n  <Errors errorMessage=\"Nu aveti dreptul de inteorgare pentru id_incarcare=5005\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ReportServiceTests.givenUnauthorizedIndex_whenCheckRepInvState_thenSkipCheck",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "5005",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "dcddde1b-6bfc-40d1-9742-238f6caff203",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\">\r\n  <Errors errorMessage=\"Nu exista niciun CIF petru care sa aveti drept\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ReportServiceTests.givenUnauthorizedTaxId_whenCheckRepInvState_thenSkipCheck",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "5006",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "b523b790-ed2c-4fac-b164-276e508e4774",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\">\r\n  <Errors errorMessage=\"Id_incarcare introdus= bbb nu este un numar intreg\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ReportServiceTests.givenInvalidUploadIndex_whenCheckRepInvState_thenSkipCheck",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "bbb",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "6755dfb8-ca30-4b0f-b4c7-44e3558895ad",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\">\r\n  <Errors errorMessage=\"Nu exista factura cu id_incarcare= 5007\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ReportServiceTests.givenInvoiceMissing_whenCheckRepInvState_thenSkipCheck",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "5007",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "7f8fe942-43e8-45dd-ba88-8f4c5c779df2",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<header xmlns=\"mfp:anaf:dgti:efactura:stareMesajFactura:v1\">\r\n  <Errors errorMessage=\"S-au facut deja 20 descarcari de mesaj in cursul zilei\"/>\r\n</header>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ReportServiceTests.givenQuotaExceeded_whenCheckRepInvState_thenSkipCheck",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id_incarcare",
+              "value": "5008",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
         }
       ],
       "responseMode": null,
@@ -659,6 +1071,201 @@
               "target": "query",
               "modifier": "cif",
               "value": "1485240",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "0e0af5d2-0c5d-4cc7-9862-0f3d2b4ecba5",
+          "body": "{\n  \"mesaje\": [\n    {\n      \"data_creare\": \"202211011336\",\n      \"cif\": \"1485236\",\n      \"id_solicitare\": \"5001131297\",\n      \"detalii\": \"Factura cu id_incarcare=5001131297 emisa de cif_emitent=1485236 pentru cif_beneficiar=3\",\n      \"tip\": \"FACTURA TRIMISA\",\n      \"id\": \"3001503294\"\n    },\n    {\n      \"data_creare\": \"202401251436\",\n      \"cif\": \"1485236\",\n      \"id_solicitare\": \"5006514680\",\n      \"detalii\": \"Factura cu id_incarcare=5006514680 emisa de cif_emitent=1485236 pentru cif_beneficiar=1485236\",\n      \"tip\": \"FACTURA PRIMITA\",\n      \"id\": \"3009239535\"\n    },\n    {\n      \"data_creare\": \"202211011415\",\n      \"cif\": \"1485236\",\n      \"id_solicitare\": \"5001130147\",\n      \"detalii\": \"Erori de validare identificate la factura primita cu id_incarcare=5001130147\",\n      \"tip\": \"ERORI FACTURA\",\n      \"id\": \"3001293434\"\n    }\n  ],\n  \"serial\": \"1234AA456\",\n  \"cui\": \"1485236\",\n  \"titlu\": \"Lista Mesaje disponibile din ultimele 60 zile\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "MessagesServiceTests",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer MessagesServiceTests",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "20",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "ce54c027-da2b-46b9-a59c-643eb65e33f6",
+          "body": "{\n  \"eroare\": \"No messages found\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "MessagesServiceTests.givenNoMessagesFound_whenCheckForReceivedMessages_thenDoNothing",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer MessagesServiceTests",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "21",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "30b48a30-121b-479b-9c14-96c53e1f8823",
+          "body": "{\n  \"eroare\": \"Too many messages found. Use pagination!\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "MessagesServiceTests.givenTooManyMessagesError_whenCheckForReceivedMessages_thenThrowException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer MessagesServiceTests",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "22",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "f6859395-f909-46e8-8e58-846f435855b7",
+          "body": "{\n  \"eroare\": \"Some other custom error happened! eg: credentials error\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "MessagesServiceTests.givenErrorReturned_whenCheckForReceivedMessages_thenThrowException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer MessagesServiceTests",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "23",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "893c9f5b-c0dc-4946-9b9f-3c833101554e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "MessagesServiceTests.givenStatusCodeNotOK_whenCheckForReceivedMessages_thenThrowException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer MessagesServiceTests",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "zile",
+              "value": "24",
               "invert": false,
               "operator": "equals"
             }

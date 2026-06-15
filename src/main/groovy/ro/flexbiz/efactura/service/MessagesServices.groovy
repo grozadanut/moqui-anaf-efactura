@@ -9,9 +9,7 @@ import org.moqui.entity.EntityCondition
 import org.moqui.entity.EntityValue
 import org.moqui.service.ServiceException
 import org.w3c.dom.Document
-import ro.flexbiz.efactura.entity.ReceivedMessage
 import ro.flexbiz.efactura.mapper.AnafMessageMapper
-import ro.flexbiz.efactura.pojo.anaf.AnafReceivedMessage
 import ro.flexbiz.efactura.pojo.anaf.AnafReceivedMessages
 import ro.flexbiz.efactura.util.StringUtils
 
@@ -65,7 +63,7 @@ class MessagesServices {
         return [resultList: receivedMessages.getMessages().stream()
                 .map(AnafMessageMapper.INSTANCE::toEntity)
                 .map(msg -> msg.save(ec))
-                .map(msg -> afterMessageSaved(accessToken, msg))
+                .map(msg -> afterMessageSaved(ec, accessToken, msg))
                 .collect(Collectors.toList())]
     }
 
@@ -79,16 +77,16 @@ class MessagesServices {
 
     static Map<String, Object> billReceived(ExecutionContext ec) {
         final String accessToken = ec.context.accessToken
-        ReceivedMessage message = ec.context.receivedMessage
+        Map<String, Object> message = ec.context.receivedMessage
 
-        if (message.messageType !=  AnafReceivedMessage.AnafReceivedMessageType.BILL_RECEIVED)
+        if (message.get("statusId") != "AnafRecMsgBillReceived")
             throw new ServiceException("Only AnafRecMsgBillReceived status allowed")
 
         if (ec.entity.fastFindOne("ro.flexbiz.efactura.ReceivedInvoice",
-                false, true, message.getId()) != null)
+                false, true, message.get("id")) != null)
             return
 
-        final String downloadId = message.getId()
+        final String downloadId = message.get("id")
         Map<String, Object> downloadZipResponse = ec.service.sync()
                 .name("AnafServices.download#Response")
                 .parameters([accessToken: accessToken, downloadId: downloadId])
@@ -109,8 +107,8 @@ class MessagesServices {
             if (StringUtils.equalsIgnoreCase(docType, "Invoice")) {
                 final InvoiceType readInvoice = UBL21Marshaller.invoice().read(rawXml)
                 EntityValue recInv = ec.entity.makeValue("ro.flexbiz.efactura.ReceivedInvoice")
-                recInv.set("id", message.getId())
-                recInv.set("uploadIndex", message.getUploadIndex())
+                recInv.set("id", message.get("id"))
+                recInv.set("uploadIndex", message.get("uploadIndex"))
                 recInv.set("downloadId", downloadId)
                 recInv.set("xmlRaw", rawXml)
                 recInv.set("issueDate", readInvoice.issueDateValue.toEpochSecond(LocalTime.MIN)*1000)
@@ -118,8 +116,8 @@ class MessagesServices {
             } else if (StringUtils.equalsIgnoreCase(docType, "CreditNote")) {
                 final CreditNoteType readCreditNote = UBL21Marshaller.creditNote().read(rawXml)
                 EntityValue recCreditNote = ec.entity.makeValue("ro.flexbiz.efactura.ReceivedCreditNote")
-                recCreditNote.set("id", message.getId())
-                recCreditNote.set("uploadIndex", message.getUploadIndex())
+                recCreditNote.set("id", message.get("id"))
+                recCreditNote.set("uploadIndex", message.get("uploadIndex"))
                 recCreditNote.set("downloadId", downloadId)
                 recCreditNote.set("xmlRaw", rawXml)
                 recCreditNote.set("issueDate", readCreditNote.issueDateValue.toEpochSecond(LocalTime.MIN)*1000)

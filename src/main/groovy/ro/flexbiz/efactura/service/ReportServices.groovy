@@ -37,8 +37,8 @@ class ReportServices {
                 .parameters([accessToken: accessToken, invoice: invoice])
                 .call()
         final EntityValue reportToSave = mapResult(ec, uploadResult)
-        reportToSave.set("invoiceId", invoice.getId())
-        return [reportedInvoice: reportToSave.store()]
+        reportToSave.set("invoiceId", invoice.getId()+"")
+        return reportToSave.store()
     }
 
     private static void validateReportState(final String statusId) {

@@ -81,6 +81,8 @@ test {
     systemProperty 'moqui.runtime', moquiDir.absolutePath + '/runtime'
     systemProperty 'moqui.conf', 'conf/MoquiDevConf.xml'
     systemProperty 'moqui.init.static', 'true'
+    // component specific system properties for tests
+    systemProperty 'anaf.request.sleep-delay.seconds', '0'
 
     classpath += files(sourceSets.main.output.classesDirs)
     // filter out classpath entries that don't exist (gradle adds a bunch of these), or ElasticSearch JarHell will blow up
