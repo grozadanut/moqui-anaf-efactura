@@ -18,6 +18,10 @@ along with this software (see the LICENSE.md file). If not, see
 <resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/rest-api-3.xsd"
         name="moqui-anaf-efactura" displayName="moqui-anaf-efactura API" version="0.0.0" description="">
 
+    <resource name="token">
+        <method type="get"><service name="ro.flexbiz.efactura.AuthServices.find#AnafAccessToken"/></method>
+    </resource>
+
     <resource name="report">
         <method type="put"><service name="EFacturaServices.report#Invoice"/></method>
         <resource name="{id}">

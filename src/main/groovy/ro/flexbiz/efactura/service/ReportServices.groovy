@@ -101,6 +101,7 @@ class ReportServices {
                 Thread.currentThread().interrupt()
             }
         })
+        return [:]
     }
 
     private static void saveReportedInvoiceResult(ExecutionContext ec, final String anafAccessToken, final EntityValue awaitingInvoice) {
