@@ -3,9 +3,11 @@ package ro.flexbiz.efactura.service
 import org.moqui.context.ExecutionContext
 import org.moqui.entity.EntityCondition
 import org.moqui.entity.EntityValue
+import org.moqui.impl.context.ContextJavaUtil
 import org.moqui.service.ServiceException
 import org.moqui.util.SystemBinding
 import ro.flexbiz.efactura.pojo.Invoice
+import ro.flexbiz.efactura.pojo.InvoiceWrapper
 import ro.flexbiz.efactura.pojo.anaf.AnafResponseError
 import ro.flexbiz.efactura.pojo.anaf.AnafUploadResponseHeader
 import ro.flexbiz.efactura.pojo.anaf.AnafUploadStateResponseHeader
@@ -17,7 +19,14 @@ import java.util.stream.Collectors
 
 class ReportServices {
     static Map<String, Object> reportInvoice(ExecutionContext ec) {
-        Invoice invoice = ec.context.invoice
+        Invoice invoice
+        try {
+            invoice = ContextJavaUtil.jacksonMapper.readValue(ec.web.requestBodyText, InvoiceWrapper.class)
+                    .invoice()
+        } catch (Exception e) {
+            ec.logger.error(e.getMessage(), e)
+            invoice = ec.context.invoice
+        }
         if (invoice.getId() == null)
             throw new ServiceException("ID-ul facturii lipseste!")
 

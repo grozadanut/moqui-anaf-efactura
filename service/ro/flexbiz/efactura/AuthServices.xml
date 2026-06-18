@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://moqui.org/xsd/service-definition-3.xsd">
 
-    <service verb="code" noun="Grant" type="java" location="ro.flexbiz.efactura.AuthenticationFlow" method="codeGrant">
+    <service verb="code" noun="Grant" type="java" location="ro.flexbiz.efactura.AuthServices" method="codeGrant">
         <description>
             Performs a login operation on the IdP server.
         </description>
     </service>
-    <service verb="handle" noun="Callback" type="java" location="ro.flexbiz.efactura.AuthenticationFlow" method="handleCallback">
+    <service verb="handle" noun="Callback" type="java" location="ro.flexbiz.efactura.AuthServices" method="handleCallback">
         <description>
             Handles the login callback and saves the access and refresh token locally.
         </description>
     </service>
-    <service verb="refresh" noun="AccessToken" type="java" location="ro.flexbiz.efactura.AuthenticationFlow" method="refreshAccessToken">
+    <service verb="refresh" noun="AccessToken" type="java" location="ro.flexbiz.efactura.AuthServices" method="refreshAccessToken">
         <in-parameters>
             <parameter name="refreshToken" required="true"/>
         </in-parameters>
@@ -19,7 +19,7 @@
             <parameter name="accessToken"/>
         </out-parameters>
     </service>
-    <service verb="find" noun="AnafAccessToken" type="java" location="ro.flexbiz.efactura.AuthenticationFlow" method="findAnafAccessToken">
+    <service verb="find" noun="AnafAccessToken" type="java" location="ro.flexbiz.efactura.AuthServices" method="findAnafAccessToken">
         <out-parameters>
             <parameter name="accessToken"/>
             <parameter name="taxId"/>

@@ -13,8 +13,5 @@
         <screen location="component://webroot/screen/webroot/apps.xml">
             <subscreens-item name="moqui_anaf_efactura" menu-title="ANAF eFactura" menu-index="97" location="component://moqui-anaf-efactura/screen/App.xml"/>
         </screen>
-        <screen location="component://webroot/screen/webroot.xml">
-            <subscreens-item name="anaf" location="component://moqui-anaf-efactura/screen/anaf.xml"/>
-        </screen>
     </screen-facade>
 </moqui-conf>

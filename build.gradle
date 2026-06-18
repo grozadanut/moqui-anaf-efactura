@@ -43,7 +43,6 @@ dependencies {
     implementation 'com.github.scribejava:scribejava-core:8.3.3'
     implementation 'com.helger.ubl:ph-ubl21:8.0.3'
     implementation 'com.helger.ubl:ph-ubl21-codelists:8.0.3'
-    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.6'
 
     testImplementation("org.assertj:assertj-core:3.23.1")
 }

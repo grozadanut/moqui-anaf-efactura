@@ -9,7 +9,7 @@ import org.moqui.util.CollectionUtilities
 
 import java.sql.Timestamp
 
-class AuthenticationFlow {
+class AuthServices {
     static void codeGrant(ExecutionContext ec) {
         OAuth20Service oauthService = OauthServiceFactory.service(ec)
         String authorizationUrl = oauthService.getAuthorizationUrl()
@@ -43,7 +43,7 @@ class AuthenticationFlow {
         EntityValue accessTokenField = ec.entity.makeValue("ro.flexbiz.security.CredentialField")
         accessTokenField.set("credentialId", "ANAF_EFACTURA_OAUTH_TOKEN")
         accessTokenField.set("name", "accessToken")
-        accessTokenField.set("fromDate", "2026-06-01T00:00:00Z")
+        accessTokenField.set("fromDate", Timestamp.valueOf("2026-06-01 00:00:00"))
         accessTokenField.set("thruDate", expiresAt)
         accessTokenField.set("value", accessToken)
         accessTokenField.store()
@@ -52,7 +52,7 @@ class AuthenticationFlow {
             EntityValue refreshTokenField = ec.entity.makeValue("ro.flexbiz.security.CredentialField")
             refreshTokenField.set("credentialId", "ANAF_EFACTURA_OAUTH_TOKEN")
             refreshTokenField.set("name", "refreshToken")
-            refreshTokenField.set("fromDate", "2026-06-01T00:00:00Z")
+            refreshTokenField.set("fromDate", Timestamp.valueOf("2026-06-01 00:00:00"))
             refreshTokenField.set("value", refreshToken)
             refreshTokenField.store()
         }
@@ -60,7 +60,7 @@ class AuthenticationFlow {
         EntityValue credentialUser = ec.entity.makeValue("ro.flexbiz.security.CredentialUser")
         credentialUser.set("credentialId", "ANAF_EFACTURA_OAUTH_TOKEN")
         credentialUser.set("userId", ec.user.userId)
-        credentialUser.set("fromDate", "2026-06-01T00:00:00Z")
+        credentialUser.set("fromDate", Timestamp.valueOf("2026-06-01 00:00:00"))
         credentialUser.set("authzActionEnumId", "AUTHZA_ALL")
         credentialUser.store()
     }
@@ -85,7 +85,7 @@ class AuthenticationFlow {
         EntityValue accessTokenField = ec.entity.makeValue("ro.flexbiz.security.CredentialField")
         accessTokenField.set("credentialId", "ANAF_EFACTURA_OAUTH_TOKEN")
         accessTokenField.set("name", "accessToken")
-        accessTokenField.set("fromDate", "2026-06-01T00:00:00Z")
+        accessTokenField.set("fromDate", Timestamp.valueOf("2026-06-01 00:00:00"))
         accessTokenField.set("thruDate", expiresAt)
         accessTokenField.set("value", accessToken)
         accessTokenField.store()

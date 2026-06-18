@@ -24,9 +24,9 @@ along with this software (see the LICENSE.md file). If not, see
 
     <resource name="report">
         <method type="put"><service name="EFacturaServices.report#Invoice"/></method>
-        <resource name="{id}">
+        <id name="invoiceId">
             <method type="get"><service name="EFacturaServices.find#ById"/></method>
-        </resource>
+        </id>
         <resource name="search">
             <resource name="findAllById">
                 <method type="get"><service name="EFacturaServices.find#AllById"/></method>
@@ -60,6 +60,9 @@ along with this software (see the LICENSE.md file). If not, see
     </resource>
 
     <resource name="invoices">
+        <id name="id">
+            <method type="patch"><service name="ReceivedInvoiceServices.patch#ReceivedInvoice"/></method>
+        </id>
         <resource name="search">
             <resource name="between">
                 <method type="get"><service name="ReceivedInvoiceServices.received#InvoicesBetween"/></method>
@@ -67,9 +70,6 @@ along with this software (see the LICENSE.md file). If not, see
             <resource name="byInvoiceIdIn">
                 <method type="get"><service name="ReceivedInvoiceServices.find#ByInvoiceIdIn"/></method>
             </resource>
-        </resource>
-        <resource name="{id}">
-            <method type="patch"><service name="ReceivedInvoiceServices.received#InvoicesBetween"/></method>
         </resource>
     </resource>
 

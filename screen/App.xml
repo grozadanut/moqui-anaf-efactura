@@ -14,9 +14,24 @@ along with this software (see the LICENSE.md file). If not, see
 -->
 <screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-3.xsd"
-        include-child-content="true" require-authentication="false" menu-image="fa fa-flash" menu-image-type="icon">
+        include-child-content="true" menu-image="fa fa-flash" menu-image-type="icon">
+
+    <transition name="code" read-only="true">
+        <actions>
+            <service-call name="ro.flexbiz.efactura.AuthServices.code#Grant" in-map="context"/>
+        </actions>
+        <default-response type="none"/>
+    </transition>
+    <transition name="callback" read-only="true">
+        <actions>
+            <service-call name="ro.flexbiz.efactura.AuthServices.handle#Callback" in-map="context"/>
+        </actions>
+        <default-response type="screen-last"/>
+    </transition>
 
     <widgets>
-        <label text="Hello World!" style="font-size: 24px; font-weight: bold; color: #00f; margin: 20px;"/>
+        <label text="Introduceti semnatura digitala si dati click pe butonul urmator pentru a va conecta la eFactura"
+               style="font-size: 24px; font-weight: bold; color: #00f; margin: 20px;"/>
+        <link text="Conectare eFactura" url="code" link-type="anchor-button"/>
     </widgets>
 </screen>

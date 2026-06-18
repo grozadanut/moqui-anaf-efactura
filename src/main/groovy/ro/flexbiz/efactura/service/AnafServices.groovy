@@ -38,12 +38,13 @@ class AnafServices {
         RestClient rest = new RestClient()
         rest.uri(SystemBinding.getPropOrEnv('anaf.api.base.url')+"/rest/upload?"+
                 RestClient.parametersMapToString([standard: "UBL", cif: taxNumber]))
-
         createAuthHeader(rest, accessToken)
+
         final InvoiceType ublInvoice = InvoiceMapper.INSTANCE.toUblInvoice(invoice)
         validateInvoice(ec, ublInvoice)
         final String ublInvoiceXml = UBL21Marshaller.invoice().getAsString(ublInvoice)
         ec.logger.info(ublInvoiceXml)
+        rest.addHeader("Content-Type", "application/xml")
         rest.text(ublInvoiceXml)
         RestClient.RestResponse anafResult = rest.method(RestClient.Method.POST).call()
         JAXBContext jc = JAXBContext.newInstance(AnafUploadResponseHeader.class)

@@ -8,7 +8,7 @@ import org.moqui.util.SystemBinding
 final class OauthServiceFactory {
     static OAuth20Service service(ExecutionContext ec) {
         String baseUrl = ec.web.getWebappRootUrl(true, null)
-        String callbackUrl = baseUrl + "/anaf/callback"
+        String callbackUrl = baseUrl + "/apps/moqui_anaf_efactura/callback"
         OAuth20Service service = new ServiceBuilder(SystemBinding.getPropOrEnv('ANAF_CLIENT_ID'))
                 .apiSecret(SystemBinding.getPropOrEnv('ANAF_CLIENT_SECRET'))
                 .callback(callbackUrl)
