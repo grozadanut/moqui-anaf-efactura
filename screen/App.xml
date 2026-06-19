@@ -16,17 +16,24 @@ along with this software (see the LICENSE.md file). If not, see
         xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-3.xsd"
         include-child-content="true" menu-image="fa fa-flash" menu-image-type="icon">
 
-    <transition name="code" read-only="true">
+    <transition name="code">
         <actions>
             <service-call name="ro.flexbiz.efactura.AuthServices.code#Grant" in-map="context"/>
         </actions>
         <default-response type="none"/>
     </transition>
-    <transition name="callback" read-only="true">
+    <transition name="callback">
         <actions>
             <service-call name="ro.flexbiz.efactura.AuthServices.handle#Callback" in-map="context"/>
         </actions>
         <default-response type="screen-last"/>
+    </transition>
+
+    <transition name="download" read-only="true">
+        <actions>
+            <service-call name="EFacturaServices.download#Response" in-map="context"/>
+        </actions>
+        <default-response type="none"/>
     </transition>
 
     <widgets>

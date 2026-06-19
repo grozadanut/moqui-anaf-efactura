@@ -5,6 +5,7 @@ import org.moqui.entity.EntityCondition
 import org.moqui.entity.EntityValue
 import org.moqui.impl.context.ContextJavaUtil
 import org.moqui.service.ServiceException
+import org.moqui.util.ObjectUtilities
 import org.moqui.util.SystemBinding
 import ro.flexbiz.efactura.pojo.Invoice
 import ro.flexbiz.efactura.pojo.InvoiceWrapper
@@ -157,9 +158,18 @@ class ReportServices {
                 .call().accessToken
         if (accessToken == null || accessToken.isEmpty())
             throw new ServiceException("Nu aveti un token de acces la ANAF!")
-        return [result: ec.service.sync()
+
+        byte[] r = ec.service.sync()
                 .name("AnafServices.download#Response")
                 .parameters([accessToken: accessToken, downloadId: downloadId])
-                .call().result]
+                .call().result
+        ec.web.response.setContentType("application/octet-stream")
+        ec.web.response.setContentLength(r.length)
+        try (ByteArrayInputStream bais = new ByteArrayInputStream(r)) {
+            ObjectUtilities.copyStream(bais, ec.web.response.outputStream)
+        } finally {
+            ec.web.response.outputStream.close()
+        }
+        return [:]
     }
 }
