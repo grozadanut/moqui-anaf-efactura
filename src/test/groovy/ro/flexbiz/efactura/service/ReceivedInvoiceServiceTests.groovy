@@ -90,9 +90,9 @@ class ReceivedInvoiceServiceTests extends Specification {
         EntityValue capturedInvoice = ec.entity.find("ro.flexbiz.efactura.ReceivedInvoice")
                 .list().first
 
-        capturedInvoice.get("id") == billReceived.getId() as String
+        capturedInvoice.get("id") == billReceived.getId()
         capturedInvoice.get("uploadIndex") == billReceived.getUploadIndex()
-        capturedInvoice.get("downloadId") == billReceived.getId().toString()
+        capturedInvoice.get("downloadId") == billReceived.getId()
         capturedInvoice.get("xmlRaw") == Files.readString(testInvoiceXmlPath)
         capturedInvoice.getTimestamp("issueDate").toLocalDateTime().toLocalDate() ==
                 LocalDate.of(2024, 1, 25)
@@ -136,9 +136,9 @@ class ReceivedInvoiceServiceTests extends Specification {
         EntityValue capturedCreditNote = ec.entity.find("ro.flexbiz.efactura.ReceivedCreditNote")
                 .list().first
 
-        capturedCreditNote.get("id") == billReceived.getId() as String
+        capturedCreditNote.get("id") == billReceived.getId()
         capturedCreditNote.get("uploadIndex") == billReceived.getUploadIndex()
-        capturedCreditNote.get("downloadId") == billReceived.getId().toString()
+        capturedCreditNote.get("downloadId") == billReceived.getId()
         capturedCreditNote.getString("xmlRaw").replaceAll("\\s", "") ==
                 Files.readString(testInvoiceXmlPath).replaceAll("\\s", "")
         capturedCreditNote.getTimestamp("issueDate").toLocalDateTime().toLocalDate() ==

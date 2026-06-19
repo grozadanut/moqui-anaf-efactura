@@ -22,7 +22,7 @@ public class AnafMessageMapperImpl implements AnafMessageMapper {
         receivedMessage.setCreationDate( message.getCreationDate() );
         receivedMessage.setDetails( message.getDetails() );
         if ( message.getId() != null ) {
-            receivedMessage.setId( Long.parseLong( message.getId() ) );
+            receivedMessage.setId( message.getId() );
         }
         receivedMessage.setMessageType( message.getMessageType() );
         receivedMessage.setTaxId( message.getTaxId() );

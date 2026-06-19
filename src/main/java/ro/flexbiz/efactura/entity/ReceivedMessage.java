@@ -9,14 +9,14 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class ReceivedMessage {
-	private Long id;
+	private String id;
 	private LocalDateTime creationDate;
 	private String taxId;
 	private String uploadIndex;
 	private String details;
 	private AnafReceivedMessage.AnafReceivedMessageType messageType;
 
-	public ReceivedMessage(Long id, LocalDateTime creationDate, String taxId, String uploadIndex, String details, AnafReceivedMessage.AnafReceivedMessageType messageType) {
+	public ReceivedMessage(String id, LocalDateTime creationDate, String taxId, String uploadIndex, String details, AnafReceivedMessage.AnafReceivedMessageType messageType) {
 		this.id = id;
 		this.creationDate = creationDate;
 		this.taxId = taxId;
@@ -27,7 +27,7 @@ public class ReceivedMessage {
 
 	public EntityValue convert(ExecutionContext ec) {
 		EntityValue entity = ec.getEntity().makeValue("ro.flexbiz.efactura.ReceivedMessage");
-		entity.set("id", id+"");
+		entity.set("id", id);
 		entity.set("creationDate", Timestamp.valueOf(creationDate));
 		entity.set("taxId", taxId);
 		entity.set("uploadIndex", uploadIndex);
@@ -49,11 +49,11 @@ public class ReceivedMessage {
 	public ReceivedMessage() {
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

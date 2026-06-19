@@ -25,9 +25,6 @@ along with this software (see the LICENSE.md file). If not, see
     </service>
     <service verb="check" noun="ForReceivedMessages" type="java"
              location="ro.flexbiz.efactura.service.MessagesServices" method="checkForReceivedMessages">
-        <in-parameters>
-            <parameter name="days" type="Integer" required="true"/>
-        </in-parameters>
         <out-parameters>
             <parameter name="resultList"/>
         </out-parameters>
