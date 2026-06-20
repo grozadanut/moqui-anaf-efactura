@@ -36,7 +36,7 @@ class ReceivedInvoiceServiceTests extends Specification {
 
     def "givenWrongMessageType_whenBillReceived_thenThrowException"() {
         given:
-        final ReceivedMessage billSent = new ReceivedMessage(3001503294L, LocalDateTime.of(2022, 11, 1, 13, 36),
+        final ReceivedMessage billSent = new ReceivedMessage("3001503294", LocalDateTime.of(2022, 11, 1, 13, 36),
                 TestData.taxId, "5001131297", "Factura cu id_incarcare=5001131297 emisa de cif_emitent="+TestData.taxId+" pentru cif_beneficiar=3",
                 AnafReceivedMessage.AnafReceivedMessageType.BILL_SENT)
         when:
@@ -49,7 +49,7 @@ class ReceivedInvoiceServiceTests extends Specification {
 
     def "givenInvoiceExists_whenBillReceived_thenDoNothing"() {
         given:
-        final ReceivedMessage billReceived = new ReceivedMessage(3009239535L, LocalDateTime.now().minusDays(10),
+        final ReceivedMessage billReceived = new ReceivedMessage("3009239535", LocalDateTime.now().minusDays(10),
                 TestData.taxId, "5006514680", "Factura cu id_incarcare=5006514680 emisa de cif_emitent=1485236 pentru cif_beneficiar="+TestData.taxId,
                 AnafReceivedMessage.AnafReceivedMessageType.BILL_RECEIVED)
         EntityValue receivedInvoice = ec.entity.makeValue("ro.flexbiz.efactura.ReceivedInvoice")
@@ -72,7 +72,7 @@ class ReceivedInvoiceServiceTests extends Specification {
 
     def "givenNewInvoice_whenBillReceived_thenSaveInvoiceWithDownloadIdAndRawXml"() {
         given:
-        final ReceivedMessage billReceived = new ReceivedMessage(3009239535L, LocalDateTime.now().minusDays(10),
+        final ReceivedMessage billReceived = new ReceivedMessage("3009239535", LocalDateTime.now().minusDays(10),
                 TestData.taxId, "5006514680", "Factura cu id_incarcare=5006514680 emisa de cif_emitent=1485236 pentru cif_beneficiar="+TestData.taxId,
                 AnafReceivedMessage.AnafReceivedMessageType.BILL_RECEIVED)
 
@@ -103,7 +103,7 @@ class ReceivedInvoiceServiceTests extends Specification {
 
     def "givenDownloadZipInternalError_whenBillReceived_thenPropagateException"() {
         given:
-        final ReceivedMessage billReceived = new ReceivedMessage(400L, LocalDateTime.now().minusDays(10),
+        final ReceivedMessage billReceived = new ReceivedMessage("400", LocalDateTime.now().minusDays(10),
                 TestData.taxId, "5006514680", "Factura cu id_incarcare=5006514680 emisa de cif_emitent=1485236 pentru cif_beneficiar="+TestData.taxId,
                 AnafReceivedMessage.AnafReceivedMessageType.BILL_RECEIVED)
 
@@ -118,7 +118,7 @@ class ReceivedInvoiceServiceTests extends Specification {
 
     def "givenNewCreditNote_whenBillReceived_thenSaveCreditNoteWithDownloadIdAndRawXml"() {
         given:
-        final ReceivedMessage billReceived = new ReceivedMessage(123L, LocalDateTime.now().minusDays(10),
+        final ReceivedMessage billReceived = new ReceivedMessage("123", LocalDateTime.now().minusDays(10),
                 TestData.taxId, "4680", "Factura cu id_incarcare=4680 emisa de cif_emitent=RO7568475 pentru cif_beneficiar="+TestData.taxId,
                 AnafReceivedMessage.AnafReceivedMessageType.BILL_RECEIVED)
 

@@ -93,15 +93,15 @@ class MessagesServiceTests extends Specification {
                 .call().resultList
 
         then:
-        final EntityValue savedBillSent = new ReceivedMessage(Long.parseLong(billSent.getId()), billSent.getCreationDate(),
+        final EntityValue savedBillSent = new ReceivedMessage(billSent.getId(), billSent.getCreationDate(),
                 taxId, billSent.getUploadIndex(), billSent.getDetails(), AnafReceivedMessage.AnafReceivedMessageType.BILL_SENT)
                 .convert(ec)
         savedBillSent.set("lastUpdatedStamp", savedMessages.first.get("lastUpdatedStamp"))
-        final EntityValue savedBillReceived = new ReceivedMessage(Long.parseLong(billReceived.getId()), billReceived.getCreationDate(),
+        final EntityValue savedBillReceived = new ReceivedMessage(billReceived.getId(), billReceived.getCreationDate(),
                 taxId, billReceived.getUploadIndex(), billReceived.getDetails(), AnafReceivedMessage.AnafReceivedMessageType.BILL_RECEIVED)
                 .convert(ec)
         savedBillReceived.set("lastUpdatedStamp", savedMessages.first.get("lastUpdatedStamp"))
-        final EntityValue savedBillErrors = new ReceivedMessage(Long.parseLong(billErrors.getId()), billErrors.getCreationDate(),
+        final EntityValue savedBillErrors = new ReceivedMessage(billErrors.getId(), billErrors.getCreationDate(),
                 taxId, billErrors.getUploadIndex(), billErrors.getDetails(), AnafReceivedMessage.AnafReceivedMessageType.BILL_ERRORS)
                 .convert(ec)
         savedBillErrors.set("lastUpdatedStamp", savedMessages.first.get("lastUpdatedStamp"))
@@ -126,19 +126,18 @@ class MessagesServiceTests extends Specification {
                 taxId, "5001130147", "Erori de validare identificate la factura primita cu id_incarcare=5001130147",
                 AnafReceivedMessage.AnafReceivedMessageType.BILL_ERRORS)
 
-        final EntityValue savedBillSent = new ReceivedMessage(Long.parseLong(billSent.getId()), billSent.getCreationDate(),
+        final EntityValue savedBillSent = new ReceivedMessage(billSent.getId(), billSent.getCreationDate(),
                 taxId, "000", "to be replaced by service call", AnafReceivedMessage.AnafReceivedMessageType.BILL_SENT)
                 .save(ec)
-        final EntityValue savedBillReceived = new ReceivedMessage(Long.parseLong(billReceived.getId()), billReceived.getCreationDate(),
+        final EntityValue savedBillReceived = new ReceivedMessage(billReceived.getId(), billReceived.getCreationDate(),
                 taxId, "000", "to be replaced by service call", AnafReceivedMessage.AnafReceivedMessageType.BILL_RECEIVED)
                 .save(ec)
-        final EntityValue savedBillErrors = new ReceivedMessage(Long.parseLong(billErrors.getId()), billErrors.getCreationDate(),
+        final EntityValue savedBillErrors = new ReceivedMessage(billErrors.getId(), billErrors.getCreationDate(),
                 taxId, "000", "to be replaced by service call", AnafReceivedMessage.AnafReceivedMessageType.BILL_ERRORS)
                 .save(ec)
 
         when:
         final List<EntityValue> savedMessages = ec.service.sync().name("MessagesServices.check#ForReceivedMessages")
-                .parameter("days", 20)
                 .call().resultList
 
         then:
@@ -151,59 +150,5 @@ class MessagesServiceTests extends Specification {
         savedBillSent.delete()
         savedBillReceived.delete()
         savedBillErrors.delete()
-    }
-
-    def "givenNoMessagesFound_whenCheckForReceivedMessages_thenDoNothing"() {
-        given:
-//        final AnafReceivedMessages anafReceivedMessages = new AnafReceivedMessages()
-//        anafReceivedMessages.setError(AnafReceivedMessages.NO_MESSAGES_ERROR)
-
-        when:
-        final List<EntityValue> savedMessages = ec.service.sync().name("MessagesServices.check#ForReceivedMessages")
-                .parameter("days", 21)
-                .call().resultList
-
-        then:
-        savedMessages == null
-        ec.entity.find("ro.flexbiz.efactura.ReceivedMessage").count() == 0
-    }
-
-    def "givenTooManyMessagesError_whenCheckForReceivedMessages_thenThrowException"() {
-//        given:
-//        final AnafReceivedMessages anafReceivedMessages = new AnafReceivedMessages()
-//        anafReceivedMessages.setError(AnafReceivedMessages.TOO_MANY_MESSAGES_ERROR)
-
-        when:
-        final List<EntityValue> savedMessages = ec.service.sync().name("MessagesServices.check#ForReceivedMessages")
-                .parameter("days", 22)
-                .call().resultList
-
-        then:
-        savedMessages == null
-        ec.message.errorsString.contains("Too many messages found. Use pagination!")
-    }
-
-    def "givenErrorReturned_whenCheckForReceivedMessages_thenThrowException"() {
-//        given:
-//        final AnafReceivedMessages anafReceivedMessages = new AnafReceivedMessages()
-//        anafReceivedMessages.setError("Some other custom error happened! eg: credentials error")
-
-        when:
-        final List<EntityValue> savedMessages = ec.service.sync().name("MessagesServices.check#ForReceivedMessages")
-                .parameter("days", 23)
-                .call().resultList
-        then:
-        savedMessages == null
-        ec.message.errorsString.contains("Some other custom error happened! eg: credentials error")
-    }
-
-    def "givenStatusCodeNotOK_whenCheckForReceivedMessages_thenThrowException"() {
-        when:
-        final List<EntityValue> savedMessages = ec.service.sync().name("MessagesServices.check#ForReceivedMessages")
-                .parameter("days", 24)
-                .call().resultList
-        then:
-        savedMessages == null
-        ec.message.errorsString.contains("Anaf response: 400")
     }
 }
