@@ -147,7 +147,7 @@ class ReportServices {
             awaitingInvoice.store()
         } else {
             ec.logger.error(MessageFormat.format("Check ANAF state failed for invoice {0} with error {1}",
-                    awaitingInvoice.getInvoiceId(), responseHeader.prettyErrorMessage()))
+                    awaitingInvoice.get("invoiceId"), responseHeader.prettyErrorMessage()))
         }
     }
 

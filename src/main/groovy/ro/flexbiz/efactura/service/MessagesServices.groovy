@@ -1,20 +1,15 @@
 package ro.flexbiz.efactura.service
 
-
-import jdk.internal.org.xml.sax.SAXException
 import org.moqui.context.ExecutionContext
 import org.moqui.entity.EntityCondition
 import org.moqui.entity.EntityListIterator
 import org.moqui.entity.EntityValue
 import org.moqui.service.ServiceException
 import org.moqui.util.MNode
-import org.w3c.dom.Document
 import ro.flexbiz.efactura.mapper.AnafMessageMapper
 import ro.flexbiz.efactura.pojo.anaf.AnafReceivedMessages
 import ro.flexbiz.efactura.util.StringUtils
 
-import javax.xml.parsers.DocumentBuilder
-import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.parsers.ParserConfigurationException
 import java.sql.Timestamp
 import java.time.LocalDate
@@ -114,11 +109,8 @@ class MessagesServices {
         final String rawXml = zipToXml(ec, zipFile)
 
         try {
-            final DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance()
-            final DocumentBuilder db = dbf.newDocumentBuilder()
-            final Document doc = db.parse(new ByteArrayInputStream(rawXml.getBytes("UTF-8")))
-            final String docType = doc.getDocumentElement().getNodeName()
             MNode rootNode = MNode.parseText(null, rawXml)
+            final String docType = rootNode.name
 
             if (StringUtils.equalsIgnoreCase(docType, "Invoice")) {
                 EntityValue recInv = ec.entity.makeValue("ro.flexbiz.efactura.ReceivedInvoice")
@@ -139,7 +131,7 @@ class MessagesServices {
             } else
                 throw new ServiceException(docType + " document type not supported")
 
-        } catch (final ParserConfigurationException | SAXException | IOException e) {
+        } catch (final ParserConfigurationException | IOException e) {
             ec.logger.error("Error parsing XML", e)
             ec.logger.error("Message: "+message)
             ec.logger.error("downloadId: "+downloadId)
