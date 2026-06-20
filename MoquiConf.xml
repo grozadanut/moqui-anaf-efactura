@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- No copyright or license for configuration file, details here are not considered a creative work. -->
 <moqui-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/moqui-conf-3.xsd">
-    <default-property name="ANAF_AUTHORIZATIONURI" value="http://mockoon:3000/anaf-oauth2/v1/authorize"/>
-    <default-property name="ANAF_TOKENURI" value="http://mockoon:3000/anaf-oauth2/v1/token"/>
-    <default-property name="ANAF_REVOKEURI" value="http://mockoon:3000/anaf-oauth2/v1/revoke"/>
+    <default-property name="ANAF_AUTHORIZATIONURI" value="http://mockoon:3002/anaf-oauth2/v1/authorize"/>
+    <default-property name="ANAF_TOKENURI" value="http://mockoon:3002/anaf-oauth2/v1/token"/>
+    <default-property name="ANAF_REVOKEURI" value="http://mockoon:3002/anaf-oauth2/v1/revoke"/>
     <default-property name="ANAF_CLIENT_ID" value=""/>
     <default-property name="ANAF_CLIENT_SECRET" value=""/>
-    <default-property name="anaf.api.base.url" value="http://mockoon:3000/prod/FCTEL"/>
+    <default-property name="anaf.api.base.url" value="http://mockoon:3002/prod/FCTEL"/>
     <default-property name="anaf.request.sleep-delay.seconds" value="2"/>
 
     <screen-facade>
