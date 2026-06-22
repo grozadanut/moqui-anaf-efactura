@@ -131,7 +131,7 @@ class MessagesServices {
             } else
                 throw new ServiceException(docType + " document type not supported")
 
-        } catch (final ParserConfigurationException | IOException e) {
+        } catch (final Exception e) {
             ec.logger.error("Error parsing XML", e)
             ec.logger.error("Message: "+message)
             ec.logger.error("downloadId: "+downloadId)
