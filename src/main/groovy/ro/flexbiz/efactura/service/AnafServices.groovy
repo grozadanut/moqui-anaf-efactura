@@ -44,11 +44,14 @@ class AnafServices {
         validateInvoice(ec, ublInvoice)
         final String ublInvoiceXml = UBL21Marshaller.invoice().getAsString(ublInvoice)
         ec.logger.info(ublInvoiceXml)
+        rest.contentType("application/xml")
         rest.addHeader("Content-Type", "application/xml")
+        rest.addHeader("Accept", "application/xml")
         rest.text(ublInvoiceXml)
         RestClient.RestResponse anafResult = rest.method(RestClient.Method.POST).call()
         JAXBContext jc = JAXBContext.newInstance(AnafUploadResponseHeader.class)
         Unmarshaller u = jc.createUnmarshaller()
+        ec.logger.info("uploadInvoice anafResult: "+anafResult.text())
         AnafUploadResponseHeader response = StringUtils.isBlank(anafResult.text()) ? null :
                 u.unmarshal(new StringReader(anafResult.text()))
         return [anafUploadResponseHeader: response,
@@ -67,9 +70,13 @@ class AnafServices {
                 RestClient.parametersMapToString([id_incarcare: uploadIndex]))
 
         createAuthHeader(rest, accessToken)
+        rest.contentType("application/xml")
+        rest.addHeader("Content-Type", "application/xml")
+        rest.addHeader("Accept", "application/xml")
         RestClient.RestResponse anafResult = rest.method(RestClient.Method.GET).call()
         JAXBContext jc = JAXBContext.newInstance(AnafUploadStateResponseHeader.class)
         Unmarshaller u = jc.createUnmarshaller()
+        ec.logger.info("checkInvoiceState anafResult: "+anafResult.text())
         AnafUploadStateResponseHeader response = StringUtils.isBlank(anafResult.text()) ? null :
                 u.unmarshal(new StringReader(anafResult.text()))
         return [anafUploadStateResponseHeader: response,
@@ -101,8 +108,12 @@ class AnafServices {
                 RestClient.parametersMapToString([zile: days, cif: taxId]))
 
         createAuthHeader(rest, accessToken)
+        rest.contentType("application/json")
+        rest.addHeader("Content-Type", "application/json")
+        rest.addHeader("Accept", "application/json")
         RestClient.RestResponse anafResult = rest.method(RestClient.Method.GET).call()
         JsonParser jsonParser = ContextJavaUtil.jacksonMapper.createParser(anafResult.bytes())
+        ec.logger.info("receivedMessages anafResult: "+anafResult.text())
         AnafReceivedMessages response = StringUtils.isBlank(anafResult.text()) ? null :
                 jsonParser.readValueAs(AnafReceivedMessages.class)
         return [anafReceivedMessages: response, statusCode: anafResult.statusCode]
